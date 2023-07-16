@@ -8,6 +8,7 @@
 	--background-end-rgb: 255, 255, 255;
 }
 
+/* mejor dejar esto aqui y si queremos utilizar los colores que queremos en dark entonces los ponemos aqui */
 @media (prefers-color-scheme: dark) {
 	:root {
 		--foreground-rgb: 255, 255, 255;
@@ -15,16 +16,112 @@
 		--background-end-rgb: 0, 0, 0;
 	}
 }
+/* 
+#845EC2
+#009EFA
+#00D2FC
+#4FFBDF */
 
 body {
-	color: rgb(var(--foreground-rgb));
-	background: linear-gradient(
-			to bottom,
-			transparent,
-			rgb(var(--background-end-rgb))
-		)
-		rgb(var(--background-start-rgb));
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
+
+/* .gradient_new{
+	width: 100vw;
+	height: 100vh;
+	background-image: linear-gradient(
+    to bottom,
+    #da57da,
+    #cc4fde,
+    #bb48e3,
+    #a743e9,
+    #9040ee,
+    #6b60fb,
+    #4277ff,
+    #0088ff,
+    #00abff,
+    #00c9ff,
+    #00e4fe,
+    #5ffbf1
+  );
+} */
+
+
+/* .main {
+	width: 100vw;
+	min-height: 100vh;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	padding: 120px 24px 160px 24px;
+	pointer-events: none;
+	background-image: linear-gradient(
+    to bottom,
+    #da57da,
+    #cc4fde,
+    #bb48e3,
+    #a743e9,
+    #9040ee,
+    #6b60fb,
+    #4277ff,
+    #0088ff,
+    #00abff,
+    #00c9ff,
+    #00e4fe,
+    #5ffbf1
+  );
+  }
+   */
+  /* .main:before {
+	background: radial-gradient(circle, rgba(59, 248, 255, 0.226) 0, #93d2f7 100%);
+	position: absolute;
+	content: "";
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	top: 0;
+  }
+  
+  .main:after {
+	content: "";
+	background-image: url("/assets/images/grid.svg");
+	z-index: 1;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	opacity: 0.4;
+	filter: invert(1);
+  } */
+  
+  /* .gradient {
+	height: fit-content;
+	z-index: -1;
+	width: 100%;
+	max-width: 640px;
+	background-image: linear-gradient(
+    to bottom,
+    #da57da,
+    #cc4fde,
+    #bb48e3,
+    #a743e9,
+    #9040ee,
+    #6b60fb,
+    #4277ff,
+    #0088ff,
+    #00abff,
+    #00c9ff,
+    #00e4fe,
+    #5ffbf1
+  );
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 100%;
+	filter: blur(100px) saturate(150%);
+	top: 80px;
+	opacity: 0.15;
+  } */
+  
