@@ -49,6 +49,7 @@ const Nav = () => {
 								PLAY
 							</Link>
 							<Link href="/marketplace">Marketplace</Link>
+
 							<Image
 								src={session?.user.image || "/assets/images/fish.svg"}
 								width={37}
@@ -75,6 +76,7 @@ const Nav = () => {
 						>
 							PLAY
 						</Link>
+
 						{providers &&
 							Object.values(providers).map((provider) => (
 								<button
