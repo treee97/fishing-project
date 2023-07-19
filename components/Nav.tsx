@@ -13,8 +13,8 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 const Nav = () => {
 	const { data: session } = useSession();
 	// const router = useRouter();
-	const [providers, setProviders] = useState(null);
-	const [toggleDropdown, setToggleDropdown] = useState(false);
+	const [providers, setProviders] = useState<null | unknown>(null);
+	const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
 
 	useEffect(() => {
 		(async () => {
@@ -62,11 +62,6 @@ const Nav = () => {
 								Sign Out
 							</button>
 						</div>
-
-						{/* <div className="flex items-center justify-around border-2 border-rose-500 ">
-							<Link href="/login">Login</Link> |{" "}
-							<Link href="/register">Register</Link>
-						</div> */}
 					</>
 				) : (
 					<>

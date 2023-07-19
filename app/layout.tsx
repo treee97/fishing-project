@@ -1,6 +1,17 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Head from "next/head";
 
+import {
+	PiFishSimpleFill,
+	PiFish,
+	PiFishSimpleBold,
+	PiFishDuotone,
+	PiFishSimpleDuotone,
+	PiFishFill,
+	PiFishSimpleLight,
+} from "react-icons/pi";
+import { GiOctopus, GiGiantSquid, GiJellyfish } from "react-icons/gi";
 import Nav from "@/components/Nav";
 import Provider from "@/components/Provider";
 import { Session } from "next-auth";
@@ -18,17 +29,47 @@ export default function RootLayout({
 	session?: Session | undefined;
 }) {
 	return (
-		//aqui BACKGROUND. SERA EL MISMO EN TODAS LAS PAGINAS. PODEMOS PONER 100VW AND 100 WH FOR THE BACKGR0UND
-
 		<html lang="en">
+			<Head>
+				{/* <link
+					href="https://api.fontshare.com/v2/css?f[]=pally@400,700,500&display=swap"
+					rel="stylesheet"
+				/> */}
+				<link
+					href="https://api.fontshare.com/v2/css?f[]=kola@400&display=swap"
+					rel="stylesheet"
+				/>
+			</Head>
 			<body>
 				<Provider session={session}>
-					<Nav />
-
 					<div className="main">
-						<div className="gradient" />
+						<div className="background">
+							<span>{<PiFishSimpleFill fontSize={50} />}</span>
+							<span>{<PiFish fontSize={50} />}</span>
+							<span>{<PiFishFill fontSize={50} />}</span>
+							<span>{<GiGiantSquid fontSize={80} />}</span>
+							<span>{<PiFishSimpleFill fontSize={70} />}</span>
+							<span>{<PiFishSimpleFill fontSize={50} />}</span>
+							<span>{<PiFishSimpleLight fontSize={50} />}</span>
+							<span>{<PiFishSimpleLight fontSize={100} />}</span>
+							<span>{<PiFishFill fontSize={50} />}</span>
+							<span>{<PiFishFill fontSize={50} />}</span>
+							<span>{<GiJellyfish fontSize={150} />}</span>
+							<span>{<PiFishSimpleFill fontSize={50} />}</span>
+							<span>{<GiOctopus fontSize={80} />}</span>
+							<span>{<PiFishSimpleDuotone fontSize={50} />}</span>
+							<span>{<PiFishSimpleDuotone fontSize={50} />}</span>
+							<span>{<PiFishDuotone fontSize={50} />} </span>
+
+							<span>{<PiFishSimpleBold fontSize={50} />}</span>
+							<span>{<PiFishSimpleBold fontSize={50} />}</span>
+							<span>{<PiFishSimpleBold fontSize={50} />}</span>
+						</div>
 					</div>
-					<main className="app">{children}</main>
+					<main className="app">
+						<Nav />
+						{children}
+					</main>
 				</Provider>
 			</body>
 		</html>
