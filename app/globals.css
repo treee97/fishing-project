@@ -43,6 +43,10 @@ body {
 	@apply text-sm text-gray-700 hover:text-gray-500 font-medium;
 }
 
+.app {
+	@apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+}
+
 .main {
 	width: 100vw;
 	min-height: 100vh;
@@ -50,6 +54,7 @@ body {
 	display: flex;
 	justify-content: center;
 	padding: 120px 24px 160px 24px;
+	border: 1px solid red;
 	pointer-events: none;
 }
 
@@ -71,8 +76,9 @@ body {
 	filter: blur(150px) saturate(150%);
 	/* opacity: 0.15; */
 }
-.app {
-	@apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+
+.blue_gradient {
+	@apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
 }
 
 /* ======================================= */
@@ -105,7 +111,7 @@ body {
 	backface-visibility: hidden;
 	position: absolute;
 	animation: move;
-	animation-duration: 45;
+	animation-duration: 45s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }

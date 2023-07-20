@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { NavbarContainer } from "@/styles/Nav";
+import { NavbarContainer, PlayBtn } from "@/styles/Nav";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 {
@@ -36,20 +36,18 @@ const Nav = () => {
 				</Link>
 			</div>
 
-			<div className="sm:flex hidden">
+			<div className="sm:flex hidden w-full border-2 border-yellow-400">
 				{/* desktop */}
 				{session?.user ? (
-					<>
-						<div className="flex gap-3 md:gap-5">
+					<div className="flex  border-2 border-lime-50">
+						{/*  items-center justify-between   w-full */}
+						<div className="border-2 gap-3 md:gap-5 border-red-500 ">
+							{/* gap-3 md:gap-5  */}
 							<Link href="/inventory">Inventory</Link>
-							<Link
-								href="/play"
-								className="font-semibold px-8 bg-neutral-500 border-2"
-							>
-								PLAY
-							</Link>
+							<PlayBtn href="/play">PLAY</PlayBtn>
 							<Link href="/marketplace">Marketplace</Link>
-
+						</div>
+						<div className="border-2 border-purple-500 flex flex-col items-center justify-end">
 							<Image
 								src={session?.user.image || "/assets/images/fish.svg"}
 								width={37}
@@ -62,16 +60,12 @@ const Nav = () => {
 								Sign Out
 							</button>
 						</div>
-					</>
+					</div>
 				) : (
 					<>
-						<Link
-							href="/play"
-							className="font-semibold px-8 bg-neutral-500 border-2"
-						>
-							PLAY
-						</Link>
-
+						<div>
+							<PlayBtn href="/play">PLAY</PlayBtn>
+						</div>
 						{providers &&
 							Object.values(providers).map((provider) => (
 								<button

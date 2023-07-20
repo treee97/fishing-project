@@ -2,8 +2,8 @@
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 
-import User from "@/models/User";
-import { connectToDB } from "@/utils/Database";
+import User from "@/models/user";
+import { connectToDB } from "@/utils/database";
 
 const generateValidUsername = (name) => {
 	const username = name.replace(" ", "").toLowerCase();
