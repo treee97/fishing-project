@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { NavbarContainer, PlayBtn } from "@/styles/Nav";
+import openGame from "@/utils/openGame";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
@@ -17,6 +18,12 @@ const Nav = () => {
     })();
   }, []);
 
+  // const router = useRouter();
+
+  const handleClick = () => {
+    openGame();
+  };
+
   return (
     <NavbarContainer>
       <div className="flex items-center border-2 border-rose-500">
@@ -30,16 +37,18 @@ const Nav = () => {
         </Link>
       </div>
 
-      <div className="sm:flex hidden w-full border-4 border-yellow-400 items-center justify-between">
+      <div className="sm:flex hidden border-2 w-full items-center justify-between">
         {/* desktop */}
         {session?.user ? (
           <>
-            <div className="flex items-center justify-center w-full">
+            <div className="border-2 flex items-center justify-center w-full gap-6">
+              <Link href="/inventory">Home</Link>
               <Link href="/inventory">Inventory</Link>
-              <PlayBtn href="/play">PLAY</PlayBtn>
+              <PlayBtn onClick={handleClick}>PLAY</PlayBtn>
               <Link href="/marketplace">Marketplace</Link>
+              <Link href="/inventory">About</Link>
             </div>
-            <div className="flex flex-col justify-center items-center ml-4 p-4">
+            <div className=" border-2 flex flex-col justify-center items-center ml-4">
               <Image
                 src={session?.user.image || "/assets/images/fish.svg"}
                 width={37}
@@ -54,8 +63,10 @@ const Nav = () => {
           </>
         ) : (
           <>
-            <div>
-              <PlayBtn href="/play">PLAY</PlayBtn>
+            <div className="w-full flex items-center justify-center">
+              <PlayBtn onClick={handleClick} className="gradient__text">
+                PLAY
+              </PlayBtn>
             </div>
             {providers &&
               Object.values(providers).map((provider) => (
@@ -75,20 +86,24 @@ const Nav = () => {
       </div>
 
       {/* mobile */}
-      <div className="sm:hidden flex">
+      <div className="sm:hidden flex relative items-center justify-center">
         {session?.user ? (
           <>
             <Image
               src={session?.user.image || "/assets/images/fish.svg"}
               width={37}
               height={37}
-              className="rounded-full"
+              className="rounded-full cursor-pointer"
               alt="profile"
               onClick={() => setToggleDropdown(!toggleDropdown)}
             />
             {toggleDropdown && (
               <div className="dropdown">
-                <Link href="/profile" onClick={() => setToggleDropdown(false)}>
+                <Link
+                  href="/profile"
+                  className="dropdown_link"
+                  onClick={() => setToggleDropdown(false)}
+                >
                   My Profile
                 </Link>
                 <Link
@@ -120,6 +135,9 @@ const Nav = () => {
           </>
         ) : (
           <>
+            <div className=" flex border-2 w-full items-center justify-center">
+              <PlayBtn className="gradient__text">PLAY</PlayBtn>
+            </div>
             {providers &&
               Object.values(providers).map((provider) => (
                 <button

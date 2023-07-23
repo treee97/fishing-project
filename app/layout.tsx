@@ -1,5 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
+// *!  By using an underscore (_) to name the imported variable, you are effectively telling the linter and compiler that you are intentionally not using the imported value and to ignore any related errors.*/
+import { Press_Start_2P} from "next/font/google";
+
+
 import Head from "next/head";
 
 import {
@@ -16,10 +20,17 @@ import Nav from "@/components/Nav";
 import Provider from "@/components/Provider";
 import { Session } from "next-auth";
 
+const Press2Play = Press_Start_2P({
+	weight: '400',
+	subsets: ["latin"],
+	variable: "--press2play",
+  });
+
 export const metadata: Metadata = {
 	title: "Fishy RPG",
 	description: "A fishing game",
 };
+
 
 export default function RootLayout({
 	children,
@@ -28,8 +39,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 	session?: Session | undefined;
 }) {
+
+
+
 	return (
-		<html lang="en">
+		<html lang="en" className={`${Press2Play.variable} font-pixelfont`}>
 			<Head>
 				{/* <link
 					href="https://api.fontshare.com/v2/css?f[]=pally@400,700,500&display=swap"
