@@ -11,7 +11,7 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				goldie: "gold",
+				// goldie: "gold",
 			},
 			// todas las opciones que tienen color, esta tambien es agregada
 
@@ -21,7 +21,12 @@ module.exports = {
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
 			fontFamily: {
-				pixelfont: ["var(--press2play)",  "ui-sans-serif", "system-ui", "sans-serif"],
+				pixelfont: [
+					"var(--press2play)",
+					"ui-sans-serif",
+					"system-ui",
+					"sans-serif",
+				],
 			},
 		},
 	},

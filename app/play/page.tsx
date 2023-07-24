@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+// import { useEffect } from "react";
+// import { useRouter } from "next/router";
 
-const PlayGame = () => {
-  const router = useRouter();
+// const PlayGame = () => {
+// 	const router = useRouter();
 
-  useEffect(() => {
-    window.open("/play/index.html", "_blank");
-    router.push("/");
-  }, []);
+// 	useEffect(() => {
+// 		window.open("/play/index.html", "_blank");
+// 		router.push("/");
+// 	}, []);
 
-  return null;
-};
+// 	return null;
+// };
 
-export default PlayGame;
+// export default PlayGame;
