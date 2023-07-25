@@ -1,7 +1,56 @@
-import React from "react";
+// InventoryComponent.js
 
-const Inventory = () => {
-	return <div>Inventory</div>;
+import { useEffect, useState } from "react";
+
+const InventoryComponent = () => {
+	const [inventoryData, setInventoryData] = useState(null);
+
+	useEffect(() => {
+		// Fetch the inventory data from the API
+		fetch("/api/inventory")
+			.then((response) => response.json())
+			.then((data) => setInventoryData(data));
+	}, []);
+
+	if (!inventoryData) {
+		return <div>Loading...</div>;
+	}
+
+	return (
+		<div className="inventory-container">
+			{inventoryData.items.map((item) => (
+				<div key={item.itemId} className="inventory-slot">
+					<div>Item: {item.itemName}</div>
+					<div>Quantity: {item.quantity}</div>
+					<div>Rarity: {item.rarity}</div>
+					{/* Display more item information as needed */}
+				</div>
+			))}
+		</div>
+	);
 };
 
-export default Inventory;
+export default InventoryComponent;
+
+// {
+//   "userId": "user123",
+//   "items": [
+//     {
+//       "itemId": "item1",
+//       "itemName": "Item A",
+//       "rarity": "Common",
+//       "quantity": 2,
+//       "habitat": ["Forest"],
+//       "price": 10
+//     },
+//     {
+//       "itemId": "item2",
+//       "itemName": "Item B",
+//       "rarity": "Rare",
+//       "quantity": 1,
+//       "habitat": ["Mountain"],
+//       "price": 20
+//     },
+//     // More items...
+//   ]
+// }

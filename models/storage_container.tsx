@@ -1,6 +1,6 @@
 import { Schema, model, Document, Model, models, Types } from "mongoose";
 
-interface StorageItem {
+export interface StorageItem {
 	itemId: string;
 	itemName: string;
 	rarity: string;
@@ -14,7 +14,7 @@ interface StorageItem {
 // 	userId: string;
 // 	items: StorageItem[];
 // }
-interface TreasureBox extends Document {
+export interface TreasureBox extends Document {
 	userId: Types.ObjectId; // Update the data type to Types.ObjectId
 	items: StorageItem[];
 }

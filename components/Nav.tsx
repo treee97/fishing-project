@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { NavbarContainer, PlayBtn } from "@/styles/Nav";
-import openGame from "@/utils/openGame";
+import OpenGameButton from "@/utils/openGame";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
@@ -20,9 +20,9 @@ const Nav = () => {
 
 	// const router = useRouter();
 
-	const handleClick = () => {
-		openGame();
-	};
+	// const handleClick = () => {
+	// 	openGame();
+	// };
 
 	return (
 		<NavbarContainer>
@@ -44,7 +44,7 @@ const Nav = () => {
 						<div className="border-2 flex items-center justify-center w-full gap-6">
 							<Link href="/inventory">Home</Link>
 							<Link href="/inventory">Inventory</Link>
-							<PlayBtn onClick={handleClick}>PLAY</PlayBtn>
+							<OpenGameButton session={session} />
 							<Link href="/marketplace">Marketplace</Link>
 							<Link href="/inventory">About</Link>
 						</div>
@@ -64,9 +64,7 @@ const Nav = () => {
 				) : (
 					<>
 						<div className="w-full flex items-center justify-center">
-							<PlayBtn onClick={handleClick} className="gradient__text">
-								PLAY
-							</PlayBtn>
+							<OpenGameButton session={session} />
 						</div>
 						{providers &&
 							Object.values(providers).map((provider) => (
@@ -136,7 +134,7 @@ const Nav = () => {
 				) : (
 					<>
 						<div className=" flex border-2 w-full items-center justify-center">
-							<PlayBtn className="gradient__text">PLAY</PlayBtn>
+							<OpenGameButton session={session} />
 						</div>
 						{providers &&
 							Object.values(providers).map((provider) => (

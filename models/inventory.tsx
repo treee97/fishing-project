@@ -1,6 +1,6 @@
 import { Schema, model, Document, Model, models, Types } from "mongoose";
 
-interface InventoryItem {
+export interface InventoryItem {
 	itemId: string;
 	itemName: string;
 	rarity: string;
@@ -10,7 +10,7 @@ interface InventoryItem {
 	// Add more properties as needed
 }
 
-interface Inventory extends Document {
+export interface Inventory extends Document {
 	userId: Types.ObjectId;
 	items: InventoryItem[];
 }
