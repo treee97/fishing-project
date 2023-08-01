@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 // Import the `fontFamily` from the Tailwind CSS configuration module
-import { fontFamily } from "./tailwind.config.js";
 
 module.exports = {
 	content: [
@@ -12,6 +11,7 @@ module.exports = {
 		extend: {
 			colors: {
 				// goldie: "gold",
+				
 			},
 			// todas las opciones que tienen color, esta tambien es agregada
 
@@ -27,6 +27,19 @@ module.exports = {
 					"system-ui",
 					"sans-serif",
 				],
+				kongtext: [
+					"var(--kongtext)",
+					"ui-sans-serif",
+					"system-ui",
+					"sans-serif",
+				],
+				silkscreen: [
+					"var(--silkscreen)",
+					"ui-sans-serif",
+					"system-ui",
+					"sans-serif",
+				]
+
 			},
 		},
 	},
