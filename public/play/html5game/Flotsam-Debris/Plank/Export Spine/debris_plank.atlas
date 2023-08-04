@@ -1,0 +1,10 @@
+debris_plank.png
+size:64,39
+filter:Linear,Linear
+pma:true
+scale:0.5
+plank
+bounds:2,2,57,15
+ripple_plank
+bounds:2,19,60,18
+offsets:0,0,61,19

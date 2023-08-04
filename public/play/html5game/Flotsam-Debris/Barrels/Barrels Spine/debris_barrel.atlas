@@ -1,0 +1,16 @@
+debris_barrel.png
+size:91,43
+filter:Linear,Linear
+pma:true
+scale:0.5
+barrel
+bounds:63,7,34,26
+offsets:0,1,35,27
+rotate:90
+barrel_rum
+bounds:35,3,38,26
+rotate:90
+ripple_barrel
+bounds:2,2,39,31
+offsets:0,0,40,31
+rotate:90

@@ -1,33 +1,37 @@
 // InventoryComponent.js
+"use client";
 
 import { useEffect, useState } from "react";
 
 const InventoryComponent = () => {
-	const [inventoryData, setInventoryData] = useState(null);
+  const [inventoryData, setInventoryData] = useState(null);
 
-	useEffect(() => {
-		// Fetch the inventory data from the API
-		fetch("/api/inventory")
-			.then((response) => response.json())
-			.then((data) => setInventoryData(data));
-	}, []);
+  useEffect(() => {
+    // Fetch the inventory data from the API
+    fetch("/api/inventory")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("esto es data )> ", data);
+        setInventoryData(data);
+      });
+  }, []);
 
-	if (!inventoryData) {
-		return <div>Loading...</div>;
-	}
+  if (!inventoryData) {
+    return <div>Loading...</div>;
+  }
 
-	return (
-		<div className="inventory-container">
-			{inventoryData.items.map((item) => (
-				<div key={item.itemId} className="inventory-slot">
-					<div>Item: {item.itemName}</div>
-					<div>Quantity: {item.quantity}</div>
-					<div>Rarity: {item.rarity}</div>
-					{/* Display more item information as needed */}
-				</div>
-			))}
-		</div>
-	);
+  return (
+    <div className="inventory-container">
+      {inventoryData.items.map((item) => (
+        <div key={item.itemId} className="inventory-slot">
+          <div>Item: {item.itemName}</div>
+          <div>Quantity: {item.quantity}</div>
+          <div>Rarity: {item.rarity}</div>
+          {/* Display more item information as needed */}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default InventoryComponent;

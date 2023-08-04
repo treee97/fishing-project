@@ -1,0 +1,16 @@
+debris_buoy.png
+size:87,79
+filter:Linear,Linear
+pma:true
+scale:0.5
+buoy
+bounds:2,6,38,38
+light1
+bounds:2,48,30,29
+offsets:1,0,32,30
+light2
+bounds:34,46,45,31
+offsets:1,0,47,32
+ripple_buoy
+bounds:42,2,43,42
+offsets:0,0,44,42

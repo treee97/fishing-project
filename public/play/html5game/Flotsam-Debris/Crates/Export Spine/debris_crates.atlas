@@ -1,0 +1,12 @@
+debris_crates.png
+size:33,86
+filter:Linear,Linear
+pma:true
+scale:0.5
+crate
+bounds:2,28,25,24
+crate_booty
+bounds:2,2,25,24
+ripple_crate
+bounds:2,54,29,30
+offsets:1,0,31,30

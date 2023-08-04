@@ -1,41 +1,48 @@
 // utils/openGame.js
 
 import { useState } from "react";
-import { PlayBtn } from "@/styles/Nav";
 import { Session } from "next-auth";
 interface OpenGameButtonProps {
-	session: Session | null; // Explicitly define the type for the session prop
+  session: Session | null; // Explicitly define the type for the session prop
 }
 
 const OpenGameButton = ({ session }: OpenGameButtonProps) => {
-	const [gameWindow, setGameWindow] = useState<Window | null>(null);
-	const gamePath = "/play/index.html";
+  const [gameWindow, setGameWindow] = useState<Window | null>(null);
+  const gamePath = "/play/index.html";
 
-	const openGame = () => {
-		// Check if the user is authenticated
-		if (!session?.user) {
-			// User is not logged in, show an error message or redirect to the login page
-			alert("You must be logged in to play the game.");
-			// Optionally, you can redirect to the login page
-			// window.location.href = "/login";
-			return;
-		}
+  const openGame = () => {
+    // Check if the user is authenticated
+    if (!session?.user) {
+      // User is not logged in, show an error message or redirect to the login page
+      alert("You must be logged in to play the game.");
+      // Optionally, you can redirect to the login page
+      // window.location.href = "/login";
+      return;
+    }
 
-		// If the game window is already open, focus on it
-		if (gameWindow && !gameWindow.closed) {
-			gameWindow.focus();
-		} else {
-			// Otherwise, open the game in a new window and store the reference
-			const newGameWindow = window.open(gamePath, "_blank");
-			setGameWindow(newGameWindow);
-		}
-	};
+    // If the game window is already open, focus on it
+    if (gameWindow && !gameWindow.closed) {
+      gameWindow.focus();
+    } else {
+      // Otherwise, open the game in a new window and store the reference
+      const newGameWindow = window.open(gamePath, "_blank");
+      setGameWindow(newGameWindow);
+    }
+  };
 
-	return (
-		<PlayBtn onClick={openGame} className="gradient__text">
-			Play
-		</PlayBtn>
-	);
+  return (
+    // <PlayBtn onClick={openGame} className="gradient__text">
+    //   Play
+    // </PlayBtn>
+    <div className="w-full flex items-center justify-center">
+      <div
+        className="p-2.5 bg-cyan-950 rounded- flex items-center cursor-pointer"
+        onClick={openGame}
+      >
+        <button className="text-slate-300 text-4xl font-normal">PLAY</button>
+      </div>
+    </div>
+  );
 };
 
 export default OpenGameButton;

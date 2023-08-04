@@ -25,13 +25,11 @@ root {
   /* DAY */
   /* text / background / primary / secondary / accent */
   /* check the zips in the local folder to get the url to the online website */
-
   color: #073d47;
   color: #bbe0e2;
   color: #12c7ed;
   color: #9eecff;
   color: #ff44ef;
-
   /* NIGHT */
   _color: #bbe0e2;
   _color: #073d47;
@@ -39,7 +37,10 @@ root {
   _color: #000405;
   _color: #d603c5;
 }
-
+::selection {
+  background: #ff44ef; /* Set the background color for selected text */
+  color: #bbe0e2; /* Set the text color for selected text */
+}
 body {
   margin: 0;
   padding: 0;
@@ -68,8 +69,7 @@ body {
 }
 
 .main::before {
-  background: url("../assets/images/map.svg"),
-    #bbe0e2 50% / cover no-repeat;
+  background: url("../assets/images/map.svg") center/cover no-repeat, #bbe0e2;
   position: absolute;
   content: "";
   z-index: 2;
@@ -77,9 +77,9 @@ body {
   height: 100%;
   top: 0;
 }
-.main:after {
+/* .main:after {
   content: "";
-  background-image: url("/assets/images/grid.svg");
+  background-image: url("../assets/images/grid.svg");
   z-index: 1;
   position: absolute;
   width: 100%;
@@ -87,4 +87,4 @@ body {
   top: 0;
   opacity: 0.4;
   filter: invert(1);
-}
+} */

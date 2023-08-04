@@ -1,3 +1,5 @@
+import { logo_fish, full_map } from "@/assets/images";
+import Image from "next/image";
 const Home = () => {
   return (
     <div>
@@ -10,6 +12,7 @@ const Home = () => {
         <li>helooooo</li>
         <li>helooooo</li>
       </ul>
+      <Image src={full_map} alt="full map" />
     </div>
   );
 };

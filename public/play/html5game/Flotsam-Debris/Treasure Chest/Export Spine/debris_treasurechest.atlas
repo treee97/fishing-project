@@ -1,0 +1,12 @@
+debris_treasurechest.png
+size:67,54
+filter:Linear,Linear
+pma:true
+scale:0.5
+chest_gold
+bounds:2,6,46,32
+offsets:3,2,52,36
+rotate:90
+ripple_chest
+bounds:36,2,50,29
+rotate:90

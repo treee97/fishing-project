@@ -1,0 +1,194 @@
+{
+"skeleton": { "hash": "lluLto78rzI", "spine": "4.0.62", "x": -38.91, "y": -26.84, "width": 80, "height": 62 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "container", "parent": "root" },
+	{ "name": "ripple", "parent": "root", "x": 1.99, "y": 2.01 }
+],
+"slots": [
+	{ "name": "ripple", "bone": "ripple", "attachment": "ripple_barrel" },
+	{ "name": "object", "bone": "container", "attachment": "barrel_rum" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"object": {
+				"barrel": { "x": 0.98, "y": 4.8, "width": 70, "height": 54 },
+				"barrel_rum": { "x": 3.05, "y": 4.8, "width": 75, "height": 52 }
+			},
+			"ripple": {
+				"ripple_barrel": { "x": -0.9, "y": 2.15, "width": 80, "height": 62 }
+			}
+		}
+	}
+],
+"animations": {
+	"barrel": {
+		"slots": {
+			"object": {
+				"attachment": [
+					{ "name": "barrel" }
+				]
+			},
+			"ripple": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3333, "color": "ffffffff" },
+					{ "time": 1.1667, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "ripple_barrel" }
+				]
+			}
+		},
+		"bones": {
+			"container": {
+				"rotate": [
+					{
+						"value": -0.07,
+						"curve": [ 0.158, -0.95, 0.312, -1.79 ]
+					},
+					{
+						"time": 0.4667,
+						"value": -1.79,
+						"curve": [ 0.8, -1.79, 1.133, 2.02 ]
+					},
+					{
+						"time": 1.4667,
+						"value": 2.02,
+						"curve": [ 1.646, 2.02, 1.824, 0.94 ]
+					},
+					{ "time": 2, "value": -0.07 }
+				],
+				"translate": [
+					{
+						"y": 0.39,
+						"curve": [ 0.333, 0, 0.667, 0, 0.333, 0.39, 0.667, -1.45 ]
+					},
+					{
+						"time": 1,
+						"y": -1.45,
+						"curve": [ 1.333, 0, 1.667, 0, 1.333, -1.45, 1.667, 0.39 ]
+					},
+					{ "time": 2, "y": 0.39 }
+				],
+				"scale": [
+					{ "curve": "stepped" },
+					{ "time": 2 }
+				],
+				"shear": [
+					{ "curve": "stepped" },
+					{ "time": 2 }
+				]
+			},
+			"ripple": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 1.1667, "curve": "stepped" },
+					{ "time": 2 }
+				],
+				"translate": [
+					{ "curve": "stepped" },
+					{ "time": 1.1667, "curve": "stepped" },
+					{ "time": 2 }
+				],
+				"scale": [
+					{ "x": 0.875, "y": 0.875 },
+					{ "time": 1.1667, "x": 1.236, "y": 1.236 },
+					{ "time": 2, "x": 0.875, "y": 0.875 }
+				],
+				"shear": [
+					{ "curve": "stepped" },
+					{ "time": 2 }
+				]
+			}
+		}
+	},
+	"barrel_rum": {
+		"slots": {
+			"object": {
+				"attachment": [
+					{ "name": "barrel_rum" }
+				]
+			},
+			"ripple": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3333, "color": "ffffffff" },
+					{ "time": 1.1667, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "ripple_barrel" }
+				]
+			}
+		},
+		"bones": {
+			"container": {
+				"rotate": [
+					{
+						"value": -0.07,
+						"curve": [ 0.158, -0.95, 0.312, -1.79 ]
+					},
+					{
+						"time": 0.4667,
+						"value": -1.79,
+						"curve": [ 0.8, -1.79, 1.133, 2.02 ]
+					},
+					{
+						"time": 1.4667,
+						"value": 2.02,
+						"curve": [ 1.646, 2.02, 1.824, 0.94 ]
+					},
+					{ "time": 2, "value": -0.07 }
+				],
+				"translate": [
+					{
+						"y": 0.39,
+						"curve": [ 0.333, 0, 0.667, 0, 0.333, 0.39, 0.667, -1.45 ]
+					},
+					{
+						"time": 1,
+						"y": -1.45,
+						"curve": [ 1.333, 0, 1.667, 0, 1.333, -1.45, 1.667, 0.39 ]
+					},
+					{ "time": 2, "y": 0.39 }
+				],
+				"scale": [
+					{ "curve": "stepped" },
+					{ "time": 2 }
+				],
+				"shear": [
+					{ "curve": "stepped" },
+					{ "time": 2 }
+				]
+			},
+			"ripple": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 1.1667, "curve": "stepped" },
+					{ "time": 2 }
+				],
+				"translate": [
+					{ "curve": "stepped" },
+					{ "time": 1.1667, "curve": "stepped" },
+					{ "time": 2 }
+				],
+				"scale": [
+					{ "x": 0.875, "y": 0.875 },
+					{ "time": 1.1667, "x": 1.236, "y": 1.236 },
+					{ "time": 2, "x": 0.875, "y": 0.875 }
+				],
+				"shear": [
+					{ "curve": "stepped" },
+					{ "time": 2 }
+				]
+			}
+		}
+	}
+}
+}
