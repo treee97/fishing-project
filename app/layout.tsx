@@ -1,13 +1,15 @@
 import "./globals.css";
 import type { Metadata } from "next";
-// *!  By using an underscore (_) to name the imported variable, you are effectively telling the linter and compiler that you are intentionally not using the imported value and to ignore any related errors.*/
+// By using an underscore (_) to name the imported variable, you are effectively telling the linter and compiler that you are intentionally not using the imported value and to ignore any related errors.
+
+//fonts
 import { Silkscreen } from "next/font/google";
 import kongtext from "next/font/local";
-
-// import Nav from "@/components/Nav";
-import Nav2 from "@/components/Nav2";
+//my components
+import Navbar from "@/components/Nav3";
 import Provider from "@/components/Provider";
 import ThemeToggleButton from "@/components/themeToggleBtn";
+//next-auth
 import { Session } from "next-auth";
 
 const KongText = kongtext({
@@ -43,7 +45,7 @@ export default function RootLayout({
         <Provider session={session}>
           <div className="main"></div>
           <main className="app">
-            <Nav2 />
+            <Navbar />
             <ThemeToggleButton />
             {children}
           </main>

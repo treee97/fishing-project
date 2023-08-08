@@ -1,4 +1,4 @@
-import { logo_fish, full_map } from "@/assets/images";
+import { full_map } from "@/assets/images";
 import Image from "next/image";
 const Home = () => {
   return (

@@ -36,7 +36,7 @@ const OpenGameButton = ({ session }: OpenGameButtonProps) => {
     // </PlayBtn>
     <div className="w-full flex items-center justify-center">
       <div
-        className="p-2.5 bg-cyan-950 rounded- flex items-center cursor-pointer"
+        className="p-2 bg-cyan-950 flex items-center cursor-pointer border-radius-8"
         onClick={openGame}
       >
         <button className="text-slate-300 text-4xl font-normal">PLAY</button>

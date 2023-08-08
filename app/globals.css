@@ -15,11 +15,6 @@ root {
     --background-end-rgb: 0, 0, 0;
   }
 }
-/* <link href="https://api.fontshare.com/v2/css?f[]=pally@400,700,500&display=swap" rel="stylesheet"> */
-/* font-family: 'Pally', sans-serif; */
-
-/* <link href="https://api.fontshare.com/v2/css?f[]=kola@400&display=swap" rel="stylesheet" /> */
-/* font-family: 'Kola', sans-serif; */
 
 .mytest {
   /* DAY */
@@ -37,10 +32,12 @@ root {
   _color: #000405;
   _color: #d603c5;
 }
+
 ::selection {
   background: #ff44ef; /* Set the background color for selected text */
   color: #bbe0e2; /* Set the text color for selected text */
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -55,7 +52,7 @@ body {
 } */
 
 .app {
-	@apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
 .main {
@@ -76,6 +73,9 @@ body {
   width: 100%;
   height: 100%;
   top: 0;
+}
+.border-radius-8 {
+  border-radius: 8px;
 }
 /* .main:after {
   content: "";

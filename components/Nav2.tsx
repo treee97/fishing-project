@@ -1,10 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import OpenGameButton from "@/utils/openGame";
 import logo_fish from "@/assets/images/golden_fish.png";
 import wave from "@/assets/icons/wave_hamburger.svg";
+import userIcon from "@/assets/icons/icon-user.svg";
+import MobileNavMenu from "./MobileNavMenu";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav2 = () => {
@@ -19,20 +21,43 @@ const Nav2 = () => {
     })();
   }, []);
 
+  const mobileMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleDocumentClick = (event: any) => {
+      // Close the mobile menu if the click occurs outside the menu
+      // if (
+      //   showMobileMenu &&
+      //   mobileMenuRef.current &&
+      //   !mobileMenuRef.current.contains(event.target)
+      // ) {
+      //   setShowMobileMenu(false);
+      // }
+    };
+
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, [showMobileMenu]);
+
   const handleToggleMobileMenu = () => {
-    setShowMobileMenu((prev) => !prev);
+    return setShowMobileMenu((prev) => !prev);
   };
 
   return (
     <div className="w-full h-20 flex items-center justify-between px-4 md:px-8 mt-4 md:mt-8">
+      <Link href="/">
+        <Image width={44} height={80} src={logo_fish} alt="fish logo" />
+      </Link>
+
+      {/* ​‌‍‌𝗜𝗙 𝗨𝗦𝗘𝗥 𝗜𝗦 𝗟𝗢𝗚𝗚𝗘𝗗 𝗜𝗡 =>​ */}
+
       {session?.user ? (
         <>
-          <Link href="/">
-            <Image width={44} height={80} src={logo_fish} alt="fish logo" />
-          </Link>
-
           <div className="flex items-center justify-center gap-4">
-            {/* esta oculta hasta que llega a md:flex */}
+            {/*this is hidden by default but can be seen from 768px or bigger */}
             <div className="hidden md:flex items-center space-x-4">
               <Link href="/" className="text-cyan-950 text-xl font-normal">
                 Home
@@ -57,7 +82,8 @@ const Nav2 = () => {
               </Link>
             </div>
           </div>
-          <div className="flex items-center justify-around">
+
+          <div className="hidden md:flex items-center justify-around">
             <Image
               src={session?.user.image || "/assets/images/fish.svg"}
               width={37}
@@ -74,9 +100,8 @@ const Nav2 = () => {
             </button>
           </div>
 
-          {/* mobile viewport */}
-          <div className="sm:hidden flex items-center justify-center">
-            {/* Hamburger icon */}
+          {/* MOBILE VIEWPORT WHEN USER IS LOGGED IN*/}
+          <div className="hidden sm:flex items-center justify-center">
             <button
               type="button"
               onClick={handleToggleMobileMenu}
@@ -85,45 +110,156 @@ const Nav2 = () => {
               <Image src={wave} alt="Menu" />
             </button>
 
-            <div className="w-96 h-96 left-[429px] top-[550.30px] absolute origin-top-left -rotate-180 bg-cyan-950 rounded-full" />
-            <div className="w-52 h-28 left-[179px] top-[702px] absolute">
-              <div className="w-36 h-28 left-0 top-0 absolute bg-cyan-950 rounded-full" />
-            </div>
-            <div className="origin-top-left -rotate-180 w-52 h-28 left-[345px] top-[143.66px] absolute">
-              <div className="w-36 h-28 left-0 top-0 absolute origin-top-left -rotate-180 bg-cyan-950 rounded-full" />
-            </div>
-            <div className="w-52 h-28 left-[28px] top-[565px] absolute">
-              <div className="w-36 h-28 left-0 top-0 absolute bg-cyan-950 rounded-full" />
-            </div>
-            <div className="left-[179px] top-[255px] absolute flex-col justify-start items-start gap-7 inline-flex">
-              <div className="w-24 text-white text-xl font-normal">home</div>
-              <div className="text-white text-xl font-normal">Profile</div>
-              <div className="text-white text-xl font-normal">marketplace</div>
-              <div className="text-white text-xl font-normal">Inventory</div>
-              <div className="text-white text-xl font-normal">Sign Out</div>
-            </div>
+            {showMobileMenu && (
+              <>
+                <div className="w-96 h-96 left-[429px] top-[550.30px] absolute origin-top-left -rotate-180 bg-cyan-950 rounded-full" />
+                {/* <div className="w-52 h-28 left-[179px] top-[702px] absolute">
+                  <div className="w-36 h-28 left-0 top-0 absolute bg-cyan-950 rounded-full" />
+                </div> */}
+                {/* <div className="origin-top-left -rotate-180 w-52 h-28 left-[345px] top-[143.66px] absolute">
+                  <div className="w-36 h-28 left-0 top-0 absolute origin-top-left -rotate-180 bg-cyan-950 rounded-full" />
+                </div> */}
+                {/* <div className="w-52 h-28 left-[28px] top-[565px] absolute">
+                  <div className="w-36 h-28 left-0 top-0 absolute bg-cyan-950 rounded-full" />
+                </div> */}
+                <div className="left-[179px] top-[255px] absolute flex-col justify-start items-start gap-7 inline-flex">
+                  <Link
+                    href="/"
+                    className="w-24 text-white text-xl font-normal"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    href="profile"
+                    className="text-white text-xl font-normal"
+                  >
+                    Profile
+                  </Link>
+                  <Link
+                    href="marketplace"
+                    className="text-white text-xl font-normal"
+                  >
+                    Marketplace
+                  </Link>
+                  <Link
+                    href="inventory"
+                    className="text-white text-xl font-normal"
+                  >
+                    Inventory
+                  </Link>
+
+                  {/* esta o no signeado conditional rendering */}
+                  {session?.user ? (
+                    <>
+                      <div
+                        className="text-white text-xl font-normal cursor-pointer"
+                        onClick={() => signOut()}
+                      >
+                        Sign Out
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* esto nunca se ve porque no tenemos menu desplegable de momento. pondriamos wave aqui pero solo tenemos el sign out. */}
+                      {providers &&
+                        Object.values(providers).map((provider) => (
+                          <button
+                            type="button"
+                            key={provider.name}
+                            onClick={() => {
+                              signIn(provider.id);
+                            }}
+                            className="text-cyan-950 text-xl font-normal"
+                          >
+                            Sign in
+                          </button>
+                        ))}
+                    </>
+                  )}
+                </div>
+              </>
+            )}
           </div>
         </>
       ) : (
+        // WHEN THE USER IS NOT LOGGED IN
         <>
-          <Link href="/">
-            <Image width={44} height={80} src={logo_fish} alt="fish logo" />
-          </Link>
+          <div className="hidden sm:flex items-center justify-center">
+            <button
+              type="button"
+              onClick={handleToggleMobileMenu}
+              className="block text-gray-600 hover:text-gray-900 focus:text-gray-900 focus:outline-none"
+            >
+              <Image src={wave} alt="Menu" />
+            </button>
 
-          <OpenGameButton session={session} />
-          {providers &&
-            Object.values(providers).map((provider) => (
-              <button
-                type="button"
-                key={provider.name}
-                onClick={() => {
-                  signIn(provider.id);
-                }}
-                className="text-cyan-950 text-xl font-normal"
-              >
-                Sign in
-              </button>
-            ))}
+            {showMobileMenu && (
+              <>
+                <div className="w-96 h-96 left-[429px] top-[550.30px] absolute origin-top-left -rotate-180 bg-cyan-950 rounded-full" />
+
+                <div className="flex-col justify-start items-start gap-7 inline-flex">
+                  {/* esta o no signeado conditional rendering */}
+                  {session?.user ? (
+                    <>
+                      <Link
+                        href="/"
+                        className="w-24 text-white text-xl font-normal"
+                      >
+                        Home
+                      </Link>
+                      <Link
+                        href="profile"
+                        className="text-white text-xl font-normal"
+                      >
+                        Profile
+                      </Link>
+                      <Link
+                        href="marketplace"
+                        className="text-white text-xl font-normal"
+                      >
+                        Marketplace
+                      </Link>
+                      <Link
+                        href="inventory"
+                        className="text-white text-xl font-normal"
+                      >
+                        Inventory
+                      </Link>
+                      <div
+                        className="text-white text-xl font-normal cursor-pointer"
+                        onClick={() => signOut()}
+                      >
+                        Sign Out
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        href="/"
+                        className="w-24 text-white text-xl font-normal"
+                      >
+                        Home
+                      </Link>
+                      {/* esto nunca se ve porque no tenemos menu desplegable de momento. pondriamos wave aqui pero solo tenemos el sign out. */}
+                      {providers &&
+                        Object.values(providers).map((provider) => (
+                          <button
+                            type="button"
+                            key={provider.name}
+                            onClick={() => {
+                              signIn(provider.id);
+                            }}
+                            className="text-white text-xl font-normal"
+                          >
+                            Sign in
+                          </button>
+                        ))}
+                    </>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
         </>
       )}
     </div>
