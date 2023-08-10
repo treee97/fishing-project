@@ -7,6 +7,7 @@ import { Silkscreen } from "next/font/google";
 import kongtext from "next/font/local";
 //my components
 import Navbar from "@/components/Nav3";
+import Footer from "@/components/Footer";
 import Provider from "@/components/Provider";
 import ThemeToggleButton from "@/components/themeToggleBtn";
 //next-auth
@@ -39,15 +40,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${KongText.variable} ${SilkScreen.variable} font-silkscreen`}
+      className={`${KongText.variable} ${SilkScreen.variable} font-silkscreen light`}
+      style={{ colorScheme: "light" }}
     >
       <body>
         <Provider session={session}>
-          <div className="main"></div>
+          <div className="main" />
+
           <main className="app">
             <Navbar />
             <ThemeToggleButton />
             {children}
+            <Footer />
           </main>
         </Provider>
       </body>

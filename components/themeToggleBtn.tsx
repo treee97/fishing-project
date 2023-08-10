@@ -1,23 +1,28 @@
 "use client";
-import React, { useState } from "react";
+
+//react hook
+import { useState, useEffect } from "react";
+//next-theme
+import { useTheme } from "next-themes";
 
 const ThemeToggleButton = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState<boolean>(false);
 
-  const toggleTheme = () => {
-    setIsDarkMode((prevIsDarkMode) => !prevIsDarkMode);
-  };
+  useEffect(() => setMounted(true), []);
 
-  const themeClass = isDarkMode
-    ? "dark-background dark-text"
-    : "light-background light-text";
+  if (!mounted) return null;
 
   return (
     <button
-      onClick={toggleTheme}
-      className={`fixed bottom-4 right-4 p-2 rounded-full bg-gray-800 text-white ${themeClass}`}
+      className={`fixed bottom-4 right-4 p-2 rounded-full ${
+        resolvedTheme === "dark"
+          ? "text-light-text bg-light-background"
+          : "text-dark-text bg-dark-background"
+      } transition-colors duration-400`}
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
-      {isDarkMode ? "Light" : "Dark"} Mode
+      {resolvedTheme === "dark" ? "light" : "dark"}
     </button>
   );
 };

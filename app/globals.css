@@ -5,37 +5,32 @@ root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --light-text: #073d47;
+  --light-background: #bbe0e2;
+  --light-primary: #12c7ed;
+  --light-secondary: #9eecff;
+  --light-accent: #ff44ef;
+
+  --dark-light-text: #bbe0e2;
+  --dark-background: #073d47;
+  --dark-primary: #12c7ed;
+  --dark-secondary: #000405;
+  --dark-accent: #d603c5;
 }
 
 /* mejor dejar esto aqui y si queremos utilizar los colores que queremos en dark entonces los ponemos aqui */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
-
-.mytest {
-  /* DAY */
-  /* text / background / primary / secondary / accent */
-  /* check the zips in the local folder to get the url to the online website */
-  color: #073d47;
-  color: #bbe0e2;
-  color: #12c7ed;
-  color: #9eecff;
-  color: #ff44ef;
-  /* NIGHT */
-  _color: #bbe0e2;
-  _color: #073d47;
-  _color: #12c7ed;
-  _color: #000405;
-  _color: #d603c5;
-}
+} */
 
 ::selection {
-  background: #ff44ef; /* Set the background color for selected text */
-  color: #bbe0e2; /* Set the text color for selected text */
+  background: #ff44ef;
+  color: #bbe0e2;
 }
 
 body {
@@ -43,48 +38,25 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-/* .dropdown {
-	@apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end border-2;
-} */
-
-/* .dropdown_link {
-	@apply text-sm text-gray-700 hover:text-gray-500 font-medium;
-} */
 
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
-
+/* bg-[url('/img/hero-pattern.svg')] */
 .main {
-  width: 100vw;
-  min-height: 100vh;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  padding: 120px 24px 160px 24px;
-  pointer-events: none;
+  @apply w-screen min-h-screen fixed flex justify-center pointer-events-none px-6 py-32 before:bg-[url('../assets/images/map.svg')] before:bg-center before:bg-cover before:bg-no-repeat before:bg-light-background before:absolute before:content-[""] before:z-[2] before:w-full before:h-full before:top-0 dark:before:bg-[url('../assets/images/map_whiteLines.svg')] dark:before:bg-dark-background;
 }
 
-.main::before {
-  background: url("../assets/images/map.svg") center/cover no-repeat, #bbe0e2;
-  position: absolute;
-  content: "";
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  top: 0;
-}
+
 .border-radius-8 {
   border-radius: 8px;
 }
-/* .main:after {
-  content: "";
-  background-image: url("../assets/images/grid.svg");
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  opacity: 0.4;
-  filter: invert(1);
-} */
+
+.tracking-tighter-custom {
+  letter-spacing: -24px;
+}
+
+.section_and_padding {
+  min-height: 100vh;
+  padding: 4rem 6rem;
+}

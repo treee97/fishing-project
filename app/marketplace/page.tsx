@@ -14,21 +14,4 @@ const Marketplace = () => {
   );
 };
 
-export const getServerSideProps = async (context: any) => {
-  const session = await getSession(context);
-
-  if (!session?.user) {
-    return {
-      redirect: {
-        destination: "/", // Redirect to the login page if the user is not authenticated
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: { session },
-  };
-};
-
 export default Marketplace;

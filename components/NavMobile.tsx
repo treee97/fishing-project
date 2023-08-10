@@ -29,7 +29,7 @@ const NavMobile = ({ session, provider, className }: IMenuProps) => {
           <button
             type="button"
             onClick={() => setShowMenu(true)}
-            className="block text-gray-600 hover:text-gray-900 focus:text-gray-900 focus:outline-none"
+            className="block "
           >
             <Image src={wave} alt="Menu" />
           </button>
