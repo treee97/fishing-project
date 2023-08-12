@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Session } from "next-auth";
+
 interface OpenGameButtonProps {
   session: Session | null; // Explicitly define the type for the session prop
 }
@@ -31,9 +32,6 @@ const OpenGameButton = ({ session }: OpenGameButtonProps) => {
   };
 
   return (
-    // <PlayBtn onClick={openGame} className="gradient__text">
-    //   Play
-    // </PlayBtn>
     <div className="w-full flex items-center justify-center">
       <div
         className="p-2 bg-cyan-950 flex items-center cursor-pointer border-radius-8"

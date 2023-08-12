@@ -19,15 +19,6 @@ root {
   --dark-accent: #d603c5;
 }
 
-/* mejor dejar esto aqui y si queremos utilizar los colores que queremos en dark entonces los ponemos aqui */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
-
 ::selection {
   background: #ff44ef;
   color: #bbe0e2;
@@ -42,11 +33,9 @@ body {
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
-/* bg-[url('/img/hero-pattern.svg')] */
 .main {
   @apply w-screen min-h-screen fixed flex justify-center pointer-events-none px-6 py-32 before:bg-[url('../assets/images/map.svg')] before:bg-center before:bg-cover before:bg-no-repeat before:bg-light-background before:absolute before:content-[""] before:z-[2] before:w-full before:h-full before:top-0 dark:before:bg-[url('../assets/images/map_whiteLines.svg')] dark:before:bg-dark-background;
 }
-
 
 .border-radius-8 {
   border-radius: 8px;

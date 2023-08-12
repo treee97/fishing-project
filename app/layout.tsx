@@ -7,7 +7,7 @@ import { Silkscreen } from "next/font/google";
 import kongtext from "next/font/local";
 //my components
 import Navbar from "@/components/Nav3";
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import Provider from "@/components/Provider";
 import ThemeToggleButton from "@/components/themeToggleBtn";
 //next-auth
@@ -51,7 +51,7 @@ export default function RootLayout({
             <Navbar />
             <ThemeToggleButton />
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </main>
         </Provider>
       </body>

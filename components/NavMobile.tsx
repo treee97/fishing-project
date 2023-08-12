@@ -1,12 +1,12 @@
 //React-hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //next hooks
 import Image from "next/image";
 import Link from "next/link";
 //next-auth
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { Session } from "next-auth";
-
+//next-theme
 //assets
 import wave from "@/assets/icons/wave_hamburger.svg";
 //my components
@@ -29,7 +29,7 @@ const NavMobile = ({ session, provider, className }: IMenuProps) => {
           <button
             type="button"
             onClick={() => setShowMenu(true)}
-            className="block "
+            className="block"
           >
             <Image src={wave} alt="Menu" />
           </button>

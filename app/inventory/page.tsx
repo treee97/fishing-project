@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Title from "@/components/Title";
 
 const InventoryComponent = () => {
-  const [inventoryData, setInventoryData] = useState(null);
+  const [inventoryData, setInventoryData] = useState<null>(null);
 
   // useEffect(() => {
   //   // Fetch the inventory data from the API
@@ -23,7 +23,7 @@ const InventoryComponent = () => {
   // }
 
   return (
-    <div className="inventory-container relative">
+    <div className="relative">
       <Title text="Inventory" />
       {
         // inventoryData.items.map((item) => (

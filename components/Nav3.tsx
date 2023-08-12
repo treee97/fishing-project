@@ -78,7 +78,9 @@ const Navbar = () => {
                 router.push("/");
               }}
             >
-              Sign Out
+              Sign
+              <br />
+              Out
             </button>
           </div>
           {/* mobile menu  when logged*/}
@@ -102,7 +104,7 @@ const Navbar = () => {
           {providers &&
             Object.values(providers).map((provider) => (
               <div className="hidden md:flex align-center justify-center text-light-text dark:text-dark-text">
-                <Image src={userIcon} alt="user icon" className="" />
+                <Image src={userIcon} alt="user icon" />
                 <button
                   type="button"
                   key={provider.name}
