@@ -1,33 +1,28 @@
 /** @type {import('tailwindcss').Config} */
-// Import the `fontFamily` from the Tailwind CSS configuration module
 
 module.exports = {
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./utils/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	darkMode: "class",
-
 	theme: {
 		extend: {
 			colors: {
-				// Light theme colors
-				//texto oscuro
 				'light-text': '#073d47',
 				'light-background': '#bbe0e2',
 				'light-primary': '#12c7ed',
 				'light-secondary': '#9eecff',
 				'light-accent': '#ff44ef',
 
-				// Dark theme colors dark-text es el color claro
 				'dark-text': '#bbe0e2',
 				'dark-background': '#073d47',
 				'dark-primary': '#12c7ed',
 				'dark-secondary': '#000405',
 				'dark-accent': '#d603c5',
 			},
-			// todas las opciones que tienen color, esta tambien es agregada 
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic":

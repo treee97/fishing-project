@@ -34,10 +34,12 @@ const OpenGameButton = ({ session }: OpenGameButtonProps) => {
   return (
     <div className="w-full flex items-center justify-center">
       <div
-        className="p-2 bg-cyan-950 flex items-center cursor-pointer border-radius-8"
+        className="p-2 bg-dark-background dark:bg-light-background flex items-center cursor-pointer border-radius-8"
         onClick={openGame}
       >
-        <button className="text-slate-300 text-4xl font-normal">PLAY</button>
+        <button className="text-dark-text dark:text-light-text text-4xl font-normal">
+          PLAY
+        </button>
       </div>
     </div>
   );
