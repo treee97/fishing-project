@@ -1,6 +1,6 @@
 import { Schema, model, Document, Model, models, Types } from "mongoose";
 
-interface MarketplaceTransaction extends Document {
+export interface MarketplaceTransaction extends Document {
   sellerId: Types.ObjectId;
   buyerId: Types.ObjectId;
   itemId: string;

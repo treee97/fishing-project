@@ -34,27 +34,15 @@ export const connectToDB = async () => {
 };
 
 // Seeder function
-export const seedMarketplace = async () => {
+export const seedMarketplace = async (data: any) => {
   if (!isConnected) {
     console.log("Please connect to the database first.");
     return;
   }
 
   try {
-    const transactions = [
-      {
-        sellerId: new mongoose.Types.ObjectId(),
-        buyerId: new mongoose.Types.ObjectId(),
-        itemId: "69",
-        itemName: "fish A",
-        quantity: 2,
-        price: 10,
-        rarity: "Rare",
-      },
-      // Add more sample data as needed
-    ];
-
-    await MarketplaceTransactionModel.insertMany(transactions);
+    // Replace the hard-coded transactions with the provided data parameter
+    await MarketplaceTransactionModel.insertMany(data);
     console.log("Data inserted into MarketplaceTransactions collection.");
   } catch (error) {
     console.error("Error inserting data into MarketplaceTransactions:", error);

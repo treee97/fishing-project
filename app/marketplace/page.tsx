@@ -2,6 +2,8 @@
 // react
 import { useState } from "react";
 //next-auth
+//axios
+import axios from "axios";
 //my components
 import Title from "@/components/Title";
 import MarketTable from "@/components/MarketPlace/MarketTable";
@@ -9,6 +11,19 @@ import SellTable from "@/components/MarketPlace/SellTable";
 
 const Marketplace = () => {
   const [menu, setMenu] = useState<string>("buy");
+
+  const handleUploadRandomData = async () => {
+    console.log("handleupload randomt data");
+
+    try {
+      await axios.post("/api/seedmarketplace");
+      console.log(
+        "Random data uploaded to MarketplaceTransactions collection."
+      );
+    } catch (error) {
+      console.error("Error uploading random data:", error);
+    }
+  };
 
   return (
     <div className="relative custom-padding w-full">
@@ -30,6 +45,7 @@ const Marketplace = () => {
       {menu === "buy" ? (
         <>
           <MarketTable />
+          <button onClick={handleUploadRandomData}>Upload Random Data</button>
         </>
       ) : (
         <>
