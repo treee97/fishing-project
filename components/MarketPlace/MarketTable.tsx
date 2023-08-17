@@ -14,7 +14,9 @@ const MarketTable = () => {
         </tr>
         <tr className="odd:bg-zinc-100 even:bg-zinc-300 text-center">
           <td>Seven Seas Octopus</td>
-          <td style={{ color: "#2E81FF" }}>Raree</td>
+          <td style={{ color: "#2E81FF" }} className="stroke-text">
+            Rare
+          </td>
           <td className="stroke-text">10</td>
           <td className="p-2">
             <button className="rounded-md bg-dark-primary text-light-secondary px-2 hover:bg-dark-secondary hover:text-white">
@@ -24,19 +26,25 @@ const MarketTable = () => {
         </tr>
         <tr className="odd:bg-zinc-100 even:bg-zinc-300 text-center">
           <td>fisha B</td>
-          <td style={{ color: "#38ff6a" }}>Uncommon</td>
+          <td style={{ color: "#38ff6a" }} className="stroke-text">
+            Uncommon
+          </td>
           <td className="stroke-text">7</td>
           <td>Buy</td>
         </tr>
         <tr className="odd:bg-zinc-100 even:bg-zinc-300 text-center">
           <td>fish C</td>
-          <td style={{ color: "#FFC530" }}>Exotic</td>
+          <td style={{ color: "#FFC530" }} className="stroke-text">
+            Exotic
+          </td>
           <td className="stroke-text">167</td>
           <td>Buy</td>
         </tr>
         <tr className="odd:bg-zinc-100 even:bg-zinc-300 text-center">
           <td className="p-1 overflow-auto">califrastilisticoespiralidoso</td>
-          <td style={{ color: "#e202a7" }}>Legendary</td>
+          <td style={{ color: "#e202a7" }} className="stroke-text">
+            Legendary
+          </td>
           <td className="p-1 stroke-text">167.000.000</td>
           <td>Buy</td>
         </tr>

@@ -1,9 +1,10 @@
-import { Schema, model, Document, Model, models } from "mongoose";
+import { Schema, model, Document, Model, models, Types } from "mongoose";
 
 interface User extends Document {
   email: string;
   username: string;
   image?: string;
+  inventoryId?: Types.ObjectId;
 }
 
 const UserSchema = new Schema<User>({
@@ -23,8 +24,13 @@ const UserSchema = new Schema<User>({
   image: {
     type: String,
   },
+  inventoryId: {
+    type: Schema.Types.ObjectId,
+    ref: "Inventory", // Reference to the Inventory model
+  },
 });
 
 const UserModel: Model<User> = models.User || model<User>("User", UserSchema);
+// const UserModel: Model<User> = model<User>("User", UserSchema);
 
 export default UserModel;

@@ -20,7 +20,7 @@ interface IitemBox {
 const ItemBox = ({ itemData }: IitemBox) => {
   const spriteUrl = itemData ? itemData.sprite.src : "";
   return (
-    <div className="bg-dark-background dark:bg-light-background text-dark-text dark:text-light-text border-2 w-14 h-14 flex items-center justify-center">
+    <div className="bg-dark-background m-1 rounded-md dark:bg-light-background text-dark-text dark:text-light-text border-2 border-dark-primary w-16 h-16 flex items-center justify-center">
       {itemData ? (
         <Item imageUrl={spriteUrl} quantity={itemData.quantity} />
       ) : (

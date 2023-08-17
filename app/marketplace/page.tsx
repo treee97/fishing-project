@@ -11,7 +11,7 @@ const Marketplace = () => {
   const [menu, setMenu] = useState<string>("buy");
 
   return (
-    <div className="relative custom-padding">
+    <div className="relative custom-padding w-full">
       <Title text="Marketplace" />
       <div className="w-full flex items-center justify-center mb-4">
         <button

@@ -9,7 +9,7 @@ interface Iitem {
 
 const Item = ({ imageUrl, quantity }: Iitem) => {
   return (
-    <div className="p-4 w-full relative">
+    <div className="p-4 relative">
       <img src={imageUrl} alt="Item" />
       <QuantityIndicator quantity={quantity} />
     </div>

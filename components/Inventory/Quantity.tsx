@@ -4,7 +4,7 @@ interface IQuantity {
   quantity: number;
 }
 const QuantityIndicator = ({ quantity }: IQuantity) => {
-  return <div className="absolute bottom-0 z-20 right-0">x{quantity}</div>;
+  return <div className="absolute top-[6px] z-20 right-0">x{quantity}</div>;
 };
 
 export default QuantityIndicator;

@@ -2,7 +2,7 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 import InventoryModel, { InventoryItem, Inventory } from "@/models/inventory";
-import Pusher from "pusher";
+// import Pusher from "pusher";
 
 // const pusher = new Pusher({
 //   appId: "1650937",

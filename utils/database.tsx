@@ -1,5 +1,6 @@
 // GoIc3gL3rsJIrGWB
 import mongoose from "mongoose";
+import MarketplaceTransactionModel from "@/models/marketplace";
 
 let isConnected = false; //track the connection
 
@@ -29,5 +30,33 @@ export const connectToDB = async () => {
     console.log("MongoDB connected");
   } catch (error) {
     console.log(error);
+  }
+};
+
+// Seeder function
+export const seedMarketplace = async () => {
+  if (!isConnected) {
+    console.log("Please connect to the database first.");
+    return;
+  }
+
+  try {
+    const transactions = [
+      {
+        sellerId: new mongoose.Types.ObjectId(),
+        buyerId: new mongoose.Types.ObjectId(),
+        itemId: "69",
+        itemName: "fish A",
+        quantity: 2,
+        price: 10,
+        rarity: "Rare",
+      },
+      // Add more sample data as needed
+    ];
+
+    await MarketplaceTransactionModel.insertMany(transactions);
+    console.log("Data inserted into MarketplaceTransactions collection.");
+  } catch (error) {
+    console.error("Error inserting data into MarketplaceTransactions:", error);
   }
 };
