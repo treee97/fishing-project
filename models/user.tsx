@@ -16,10 +16,10 @@ const UserSchema = new Schema<User>({
   username: {
     type: String,
     required: [true, "Username is required!"],
-    match: [
-      /^(?=.*[a-zA-Z])[a-zA-Z0-9]+$/,
-      "Username in (modal/user) error - invalid,",
-    ],
+    // match: [
+    //   /^(?=.*[a-zA-Z])[a-zA-Z0-9]+$/,
+    //   "Username in (modal/user) error - invalid,",
+    // ],
   },
   image: {
     type: String,
