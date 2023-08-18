@@ -16,9 +16,9 @@ const Marketplace = () => {
     console.log("handleupload randomt data");
 
     try {
-      await axios.post("/api/seedmarketplace");
+      await axios.post("api/seedmarketplace");
       console.log(
-        "Random data uploaded to MarketplaceTransactions collection."
+        "Randoeem data uploaded to MarketplaceTransactions collection."
       );
     } catch (error) {
       console.error("Error uploading random data:", error);
