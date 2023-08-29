@@ -6,6 +6,7 @@ import axios from "axios";
 
 type MarketItemRowProps = {
   item: {
+    itemId: string;
     itemName: string;
     rarity: string;
     quantity: number;

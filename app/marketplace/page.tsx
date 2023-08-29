@@ -2,6 +2,9 @@
 // react
 import { useState } from "react";
 //next-auth
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+
 //axios
 import axios from "axios";
 //my components
@@ -11,15 +14,21 @@ import SellTable from "@/components/MarketPlace/SellTable";
 
 const Marketplace = () => {
   const [menu, setMenu] = useState<string>("buy");
+  const { data: session } = useSession();
+  const router = useRouter();
 
   const handleUploadRandomData = async () => {
     console.log("handleupload randomt data");
-
     try {
-      await axios.post("api/seedmarketplace");
-      console.log(
-        "Randoeem data uploaded to MarketplaceTransactions collection."
-      );
+      if (!session) {
+        alert("You cant push data unless you're logged in.");
+        router.push("/");
+      } else {
+        await axios.post("api/seedmarketplace");
+        console.log(
+          "Randoeem data uploaded to MarketplaceTransactions collection."
+        );
+      }
     } catch (error) {
       console.error("Error uploading random data:", error);
     }

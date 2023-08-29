@@ -8,8 +8,8 @@ const Features = () => {
         <h2 className="text-4xl md:text-6xl">Features</h2>
         <p>Most of them in progress...</p>
       </div>
-      <div className="flex flex-col items-center justify-center">
-        <div className="flex items-center justify-around">
+      <div className="flex flex-col items-center ">
+        <div className="flex flex-col md:flex-row items-center justify-around">
           <CardFeatures
             title="QUESTS"
             description="Hundred of quests where you farm, fight and explore an expansive world in constant development"
@@ -19,7 +19,7 @@ const Features = () => {
             description="To keep track of your progress and have milestones to aim for."
           />
         </div>
-        <div className="flex items-center justify-around gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-around gap-4">
           <CardFeatures
             title="ONLINE MULTIPLAYER"
             description="Play with friends or thousands of other player in a unique adventure about fishing!"
@@ -39,7 +39,7 @@ const Features = () => {
             description="Travel to anywhere you want. There's no limitations at where you can go."
           />
         </div>
-        <div className="flex items-center justify-around">
+        <div className="flex flex-col md:flex-row items-center justify-around">
           <CardFeatures
             title="PLAYER ECONOMY BASED"
             description="Players have full control over the economy."

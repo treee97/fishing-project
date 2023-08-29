@@ -33,8 +33,13 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
     e.preventDefault();
     onConfirm(quantity);
     try {
-      await handleBuy();
-      onClose();
+      if (!session) {
+        alert("You must be logged in to make a purchase");
+        onClose();
+      } else {
+        await handleBuy();
+        onClose();
+      }
     } catch (error) {
       console.error("Error purchasing item:", error);
     }
@@ -46,7 +51,7 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
       if (!session?.user) {
         console.log("user is not logged in.");
       }
-      const userId = session?.user?.id;
+      const userId = session?.user;
       console.log("the userId log is this:", userId);
 
       if (!userId) {
@@ -56,7 +61,7 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
       const response = await axios.post("/api/buyitem", {
         itemId: item.itemId, // Assuming the marketplace item ID is used here
         quantity,
-        userId: "", // use the userId here somehow but not working.
+        userId: userId, // use the userId here somehow but not working.
       });
 
       // You can handle the response here if needed

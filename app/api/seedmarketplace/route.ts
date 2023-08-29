@@ -17,10 +17,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         {
           sellerId: new mongoose.Types.ObjectId(),
           // buyerId: new mongoose.Types.ObjectId(),
-          itemId: "59595995",
-          itemName: "WOOOOOOOOOOOOOOOOO",
-          quantity: 25,
-          price: 999999,
+          itemId: "1111",
+          itemName: "aaaaaaalfonso",
+          quantity: 1,
+          price: 0,
           rarity: "exotic",
         },
         // Add more sample data as needed
