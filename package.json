@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^0.9.431",
     "@types/node": "20.4.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.7",

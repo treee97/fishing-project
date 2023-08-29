@@ -1,5 +1,4 @@
 // Item.js
-import React from "react";
 import QuantityIndicator from "./Quantity";
 
 interface Iitem {

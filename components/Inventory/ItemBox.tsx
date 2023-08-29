@@ -1,5 +1,4 @@
 // ItemBox.js
-import React from "react";
 import { TfiClose } from "react-icons/tfi";
 
 import Item from "./Item";

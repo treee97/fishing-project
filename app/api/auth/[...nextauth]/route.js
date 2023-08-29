@@ -6,20 +6,6 @@ import User from "@/models/user";
 import InventoryModel from "@/models/inventory";
 import { connectToDB } from "@/utils/database";
 
-const generateValidUsername = (name) => {
-	const username = name.replace(" ", "").toLowerCase();
-//commented this so we can accept any user name.
-
-	// const usernameRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9]+$/;
-	// const isValidUsername = usernameRegex.test(username);
-
-	// if (!isValidUsername) {
-	// 	throw new Error("Invalid username format");
-	// }
-
-	return username;
-};
-
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 
@@ -43,7 +29,6 @@ const handler = NextAuth({
 		async signIn({ account, profile, user, credentials }) {
 			try {
 				await connectToDB();
-				// const generatedUsername = generateValidUsername(profile.name);
 
 				// check if user already exists
 				const userExists = await User.findOne({ email: profile.email });
@@ -53,7 +38,7 @@ const handler = NextAuth({
 					// Create a new user
 					const newUser = await User.create({
 					  email: profile.email,
-					//   username: generatedUsername,
+				//    username: generatedUsername,
 					  username: profile.name,
 
 					  image: profile.picture,
