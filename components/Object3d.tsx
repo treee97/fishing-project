@@ -4,22 +4,24 @@ import { useRef, useEffect } from "react";
 import Spline from "@splinetool/react-spline";
 
 const Object3d = () => {
-  let initialZoom;
-  const cube = useRef();
+  let initialZoom: any;
+  const cube = useRef<any>();
 
   function getScaleValue() {
     const screenWidth = window.innerWidth;
     if (screenWidth > 1000) {
-      return 0.5;
+      return 1.2;
     } else if (screenWidth > 700) {
-      return 0.38;
+      return 1;
+      // 38 base
     } else if (screenWidth > 500) {
-      return 0.32;
+      return 0.5;
+      // 32
     }
-    return 0.25;
+    return 0.2;
   }
 
-  function onLoad(spline) {
+  function onLoad(spline: any) {
     const scaleValue = getScaleValue();
     initialZoom = scaleValue;
     spline.setZoom(scaleValue);
@@ -27,12 +29,14 @@ const Object3d = () => {
     cube.current = obj;
   }
 
-  function setSplineScale(scale) {
-    const newScale = cube.current.scale;
-    newScale.x = scale;
-    newScale.y = scale;
-    newScale.z = scale;
-    cube.current.scale = newScale;
+  function setSplineScale(scale: any) {
+    if (cube.current?.scale) {
+      const newScale = cube.current.scale;
+      newScale.x = scale;
+      newScale.y = scale;
+      newScale.z = scale;
+      cube.current.scale = newScale;
+    }
   }
 
   useEffect(() => {
@@ -47,12 +51,12 @@ const Object3d = () => {
   }, [initialZoom]);
 
   return (
-    <div className="cube-container">
+    <>
       <Spline
         onLoad={onLoad}
-        scene="https://prod.spline.design/tzP487brHNhKyON8/scene.splinecode"
+        scene="https://prod.spline.design/tTQU826ZhNDyx4Sf/scene.splinecode"
       />
-    </div>
+    </>
   );
 };
 

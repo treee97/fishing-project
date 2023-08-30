@@ -15,11 +15,11 @@ const ThemeToggleButton = () => {
 
   return (
     <button
-      className={`fixed bottom-4 right-4 p-2 rounded-full ${
+      className={`fixed z-50 bottom-4 right-4 p-2 rounded-full ${
         resolvedTheme === "dark"
           ? "text-light-text bg-light-background"
           : "text-dark-text bg-dark-background"
-      } transition-colors duration-400`}
+      } transition duration-500`}
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       {resolvedTheme === "dark" ? "light" : "dark"}

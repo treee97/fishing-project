@@ -3,12 +3,12 @@ import Image from "next/image";
 import CardFeatures from "./CardFeatures";
 const Features = () => {
   return (
-    <div className="flex flex-col items-center justify-center section custom-padding font-silkscreen">
+    <div className="flex flex-col items-center justify-center section custom-padding mb-20 gap-4">
       <div className="flex flex-col">
-        <h2 className="text-4xl md:text-6xl">Features</h2>
+        <h2 className="text-4xl md:text-7xl ">Features</h2>
         <p>Most of them in progress...</p>
       </div>
-      <div className="flex flex-col items-center ">
+      <div className="flex flex-col gap-0 items-center ">
         <div className="flex flex-col md:flex-row items-center justify-around">
           <CardFeatures
             title="QUESTS"
@@ -41,12 +41,12 @@ const Features = () => {
         </div>
         <div className="flex flex-col md:flex-row items-center justify-around">
           <CardFeatures
-            title="PLAYER ECONOMY BASED"
-            description="Players have full control over the economy."
-          />
-          <CardFeatures
             title="OPEN WORLD"
             description="Explore the vast world of Oannes"
+          />
+          <CardFeatures
+            title="PLAYER ECONOMY BASED"
+            description="Players have full control over the economy."
           />
         </div>
       </div>

@@ -30,9 +30,10 @@ const Navbar = () => {
       setProviders(null);
     }
   }, [session]);
-
+  //
   return (
-    <div className="w-full h-20 flex items-center justify-between px-4 md:px-8 mt-4 md:mt-8">
+    // fixed top-0 left-0 z-50
+    <div className="fixed top-0 left-0 z-50 w-full h-20 flex items-center justify-around px-4 md:px-8 mt-4 md:mt-8">
       {/* primera columna: logo */}
       <Link href="/">
         <Image width={44} height={80} src={logo_fish} alt="fish logo" />
