@@ -1,7 +1,6 @@
 // api/seedmarketplace.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import { connectToDB, seedMarketplace } from "@/utils/database";
-import User from "@/models/user";
 import mongoose from "mongoose";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -17,11 +16,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         {
           sellerId: new mongoose.Types.ObjectId(),
           // buyerId: new mongoose.Types.ObjectId(),
-          itemId: "1111",
-          itemName: "aaaaaaalfonso",
-          quantity: 1,
-          price: 0,
-          rarity: "exotic",
+          itemIdentifier: "31",
+          itemName: "Fish B",
+          quantity: 50,
+          price: 120,
+          rarity: "Exotic",
+          habitat: ["forest", "jungle", "coast"],
         },
         // Add more sample data as needed
       ];

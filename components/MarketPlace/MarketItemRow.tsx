@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
 import BuyModal from "./BuyModal";
-import { useSession } from "next-auth/react";
-import axios from "axios";
 
 type MarketItemRowProps = {
   item: {
@@ -49,7 +47,7 @@ const MarketItemRow = ({ item }: MarketItemRowProps) => {
   };
   const rarityColor = getRarityColor(item.rarity);
   return (
-    <tr className="odd:bg-zinc-100 even:bg-zinc-300 text-center">
+    <tr className="odd:bg-zinc-100 even:bg-zinc-300 dark:odd:bg-gray-300 dark:even:bg-gray-500 text-center">
       <td className="p-1 overflow-auto">{item.itemName}</td>
       <td style={{ color: rarityColor }} className="stroke-text">
         {item.rarity}

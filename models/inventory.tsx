@@ -1,7 +1,6 @@
 import { Schema, model, Document, Model, models, Types } from "mongoose";
-
 export interface InventoryItem {
-  itemId: string;
+  itemIdentifier: string;
   itemName: string;
   rarity: string;
   quantity: number;
@@ -24,11 +23,11 @@ const InventorySchema = new Schema<Inventory>({
   items: {
     type: [
       {
-        itemId: { type: String, required: true },
+        itemIdentifier: { type: String, required: true },
         itemName: { type: String, required: true },
         rarity: { type: String, required: true },
         quantity: { type: Number, required: true },
-        habitat: { type: Array, required: true },
+        habitat: { type: [String], required: true },
         price: { type: Number, required: true },
         // Add more properties as needed
       },

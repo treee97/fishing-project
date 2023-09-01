@@ -64,13 +64,22 @@ body {
 }
 
 .bg-blob{
-  @apply bg-[url('../public/assets/dark-blob.svg')] bg-center bg-no-repeat pointer-events-none bg-contain dark:bg-[url('../public/assets/light-blob.svg')] 
+  @apply bg-[url('../public/assets/dark-blob.svg')] bg-center bg-no-repeat pointer-events-none bg-contain dark:bg-[url('../public/assets/light-blob.svg')] w-full 
+  h-[80vh] md:h-[100vh]
 }
-
-.hehe{
-  @apply bg-slate-50
+/* pointer-events: none;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+    width: -moz-max-content;
+    width: max-content;
+    background-image: url(/_next/static/media/dark-blob.4c284b92.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat; */
+.img_map{
+  width: 100%;
+  height: 100%;
 }
-
 .border-radius-8 {
   border-radius: 8px;
 }

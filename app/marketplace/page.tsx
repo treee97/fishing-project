@@ -35,7 +35,7 @@ const Marketplace = () => {
   };
 
   return (
-    <div className="relative custom-padding w-full">
+    <div className="relative section custom-padding w-full mt-4">
       <Title text="Marketplace" />
       <div className="w-full flex items-center justify-center mb-4">
         <button

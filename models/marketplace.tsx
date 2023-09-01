@@ -3,11 +3,12 @@ import { Schema, model, Document, Model, models, Types } from "mongoose";
 export interface MarketplaceTransaction extends Document {
   sellerId: Types.ObjectId;
   // buyerId: Types.ObjectId;
-  itemId: string;
+  itemIdentifier: string;
   itemName: string;
   quantity: number;
   price: number;
   rarity: string;
+  habitat: string[];
   // Add more properties as needed
 }
 
@@ -22,7 +23,7 @@ const MarketplaceTransactionSchema = new Schema<MarketplaceTransaction>({
   //   ref: "User",
   //   required: true,
   // },
-  itemId: {
+  itemIdentifier: {
     type: String,
     required: true,
   },
@@ -40,6 +41,10 @@ const MarketplaceTransactionSchema = new Schema<MarketplaceTransaction>({
   },
   rarity: {
     type: String,
+    required: true,
+  },
+  habitat: {
+    type: [String],
     required: true,
   },
   // Add more properties as needed

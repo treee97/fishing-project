@@ -53,6 +53,7 @@ const Object3d = () => {
   return (
     <>
       <Spline
+        loading-anim
         onLoad={onLoad}
         scene="https://prod.spline.design/tTQU826ZhNDyx4Sf/scene.splinecode"
       />

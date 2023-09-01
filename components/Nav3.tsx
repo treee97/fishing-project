@@ -13,6 +13,7 @@ import userIcon from "@/assets/icons/icon-user.svg";
 //my components
 import OpenGameButton from "@/utils/openGame";
 import NavMobile from "./NavMobile";
+//my hooks
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -33,7 +34,7 @@ const Navbar = () => {
   //
   return (
     // fixed top-0 left-0 z-50
-    <div className="fixed top-0 left-0 z-50 w-full h-20 flex items-center justify-around px-4 md:px-8 mt-4 md:mt-8">
+    <div className="absolute top-0 left-0 z-50 w-full h-20 flex items-center justify-around ">
       {/* primera columna: logo */}
       <Link href="/">
         <Image width={44} height={80} src={logo_fish} alt="fish logo" />
@@ -44,9 +45,12 @@ const Navbar = () => {
           {/*segunda columna: links centrados entre logo y signin */}
           <div className="hidden md:flex items-center justify-center gap-4">
             <div className="flex items-center space-x-4">
-              {/* <Link href="/" className="text-light-text text-xl font-normal">
+              <Link
+                href="/"
+                className="text-light-text dark:text-dark-text text-xl font-normal"
+              >
                 Home
-              </Link> */}
+              </Link>
               <Link
                 href="marketplace"
                 className="text-light-text dark:text-dark-text text-xl font-normal"
@@ -103,8 +107,11 @@ const Navbar = () => {
           </div>
 
           {providers &&
-            Object.values(providers).map((provider) => (
-              <div className="hidden md:flex align-center justify-center text-light-text dark:text-dark-text">
+            Object.values(providers).map((provider, index) => (
+              <div
+                className="hidden md:flex align-center justify-center text-light-text dark:text-dark-text"
+                key={index}
+              >
                 <Image src={userIcon} alt="user icon" />
                 <button
                   type="button"

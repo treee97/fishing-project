@@ -3,13 +3,16 @@ import { useState } from "react";
 import axios from "axios";
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
 import { useSession } from "next-auth/react";
+import InventoryModel from "@/models/inventory";
 
 type BuyModalProps = {
   item: {
-    itemId: string;
+    itemIdentifier: string;
     itemName: string;
     quantity: number;
     price: number;
+    habitat: string[];
+    rarity: string;
   };
   onClose: () => void; // Callback to close the modal
   onConfirm: (quantity: number) => void; // Callback to confirm the purchase
@@ -48,28 +51,69 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
   const handleBuy = async () => {
     try {
       // Send a request to the server to buy the item
-      if (!session?.user) {
-        console.log("user is not logged in.");
-      }
-      const userId = session?.user;
-      console.log("the userId log is this:", userId);
+      if (!session) {
+        return new Response("You must be logged in to make a purchase", {
+          status: 401,
+        });
+      } else {
+        console.log("session in buymodal", session.user?.email);
 
-      if (!userId) {
-        console.log("User is not logged in.");
-        return;
-      }
-      const response = await axios.post("/api/buyitem", {
-        itemId: item.itemId, // Assuming the marketplace item ID is used here
-        quantity,
-        userId: userId, // use the userId here somehow but not working.
-      });
+        // Access the user object from the session
+        const user = session?.user;
 
-      // You can handle the response here if needed
-      console.log("Buy response:", response.data);
+        // Check if the user object contains the user's ID
+        const userId = user?.id;
+
+        // if (!userId) {
+        //   console.error("User ID is not available in session.");
+        //   return new Response("User ID is not available.", { status: 401 });
+        // }
+        try {
+          const response = await axios.post("/api/buyitem", {
+            itemIdentifier: item.itemIdentifier,
+            quantity,
+            userId: userId,
+          });
+          const userInventory = await InventoryModel.findOne({ userId });
+          if (!userInventory) {
+            // Handle the case where the user's inventory doesn't exist
+            return new Response("User inventory not found.", { status: 404 });
+          }
+
+          // Check if an item with the same type already exists in the user's inventory
+          const existingItemIndex = userInventory.items.findIndex(
+            (inventoryItem) =>
+              inventoryItem.itemIdentifier === item.itemIdentifier
+          );
+
+          if (existingItemIndex !== -1) {
+            // Item of the same type exists, update its quantity
+            userInventory.items[existingItemIndex].quantity += quantity;
+          } else {
+            // Item of the same type doesn't exist, add a new entry
+            userInventory.items.push({
+              itemIdentifier: item.itemIdentifier,
+              itemName: item.itemName,
+              quantity,
+              rarity: item.rarity,
+              price: item.price,
+              habitat: item.habitat,
+            });
+          }
+
+          // Update the user's inventory in the database
+          await userInventory.save();
+
+          console.log("Buy response:", response.data);
+        } catch (error) {
+          console.error("Error buying item:", error);
+        }
+      }
     } catch (error) {
       console.error("Error buying item:", error);
     }
   };
+
   const total = item.price * quantity;
 
   return (

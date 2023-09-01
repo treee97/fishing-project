@@ -22,7 +22,7 @@ const handler = NextAuth({
 			const sessionUser = await User.findOne({ email: session.user.email });
 			session.user.id = sessionUser._id.toString();
 
-			console.log("Session User ID:", session.user.id);
+			console.log("Session User ID en next-auth/route.js:", session.user.id);
 
 			return session;
 		},
