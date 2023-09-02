@@ -1,13 +1,13 @@
-"use client";
 import { useState } from "react";
 import BuyModal from "./BuyModal";
 
 type MarketItemRowProps = {
   item: {
-    itemId: string;
+    itemIdentifier: string;
     itemName: string;
     rarity: string;
     quantity: number;
+    habitat: string[];
     price: number;
     // Add other properties as needed
   };

@@ -1,8 +1,9 @@
 import { connectToDB } from "@/utils/database";
+// import { NextApiRequest } from "next";
 import MarketplaceTransaction from "@/models/marketplace";
 import InventoryModel from "@/models/inventory";
 
-export const POST = async (req) => {
+export const POST = async (req: any) => {
   const { itemIdentifier, quantity, userId } = await req.json();
 
   try {

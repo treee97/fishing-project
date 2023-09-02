@@ -6,7 +6,7 @@ import { StaticImageData } from "next/image";
 
 interface IitemBox {
   itemData: {
-    itemId: string;
+    itemIdentifier: string;
     itemName: string;
     rarity: string;
     quantity: number;
@@ -21,7 +21,11 @@ const ItemBox = ({ itemData }: IitemBox) => {
   return (
     <div className="bg-dark-background m-1 rounded-md dark:bg-light-background text-dark-text dark:text-light-text border-2 border-dark-primary w-16 h-16 flex items-center justify-center">
       {itemData ? (
-        <Item imageUrl={spriteUrl} quantity={itemData.quantity} />
+        <Item
+          key={itemData.itemIdentifier}
+          imageUrl={spriteUrl}
+          quantity={itemData.quantity}
+        />
       ) : (
         <TfiClose className="opacity-50" />
       )}

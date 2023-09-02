@@ -16,12 +16,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         {
           sellerId: new mongoose.Types.ObjectId(),
           // buyerId: new mongoose.Types.ObjectId(),
-          itemIdentifier: "31",
-          itemName: "Fish B",
-          quantity: 50,
-          price: 120,
-          rarity: "Exotic",
-          habitat: ["forest", "jungle", "coast"],
+          itemIdentifier: "69",
+          itemName: "cringish",
+          quantity: 99,
+          price: 48,
+          rarity: "rare",
+          habitat: ["cave", "mountain"],
         },
         // Add more sample data as needed
       ];
