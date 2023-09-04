@@ -1,5 +1,4 @@
 import { connectToDB } from "@/utils/database";
-// import { NextApiRequest } from "next";
 import MarketplaceTransaction from "@/models/marketplace";
 import InventoryModel from "@/models/inventory";
 
@@ -23,7 +22,8 @@ export const POST = async (req: any) => {
     if (marketplaceTransaction.quantity < quantity) {
       return new Response("Insufficient quantity available.", { status: 400 });
     }
-    // restamos la cantidad comprada al total
+
+    // Subtract the purchased quantity from the total
     marketplaceTransaction.quantity -= quantity;
 
     if (marketplaceTransaction.quantity === 0) {
@@ -51,23 +51,36 @@ export const POST = async (req: any) => {
       // Handle the case where the user's inventory doesn't exist
       return new Response("User inventory not found.", { status: 404 });
     }
+
     // Check if the user's inventory already contains 16 different items
     if (userInventory.items.length >= 16) {
-      return new Response("Inventory is full. Cannot add more items.", {
-        status: 400,
-      });
-    }
-    // Check if the item already exists in the user's inventory
-    const existingItemIndex = userInventory.items.findIndex(
-      (item) => item.itemIdentifier === itemIdentifier
-    );
+      // Check if the item already exists in the user's inventory
+      const existingItemIndex = userInventory.items.findIndex(
+        (item) => item.itemIdentifier === itemIdentifier
+      );
 
-    if (existingItemIndex !== -1) {
-      // If the item already exists, update its quantity
-      userInventory.items[existingItemIndex].quantity += quantity;
+      if (existingItemIndex !== -1) {
+        // If the item already exists, update its quantity
+        userInventory.items[existingItemIndex].quantity += quantity;
+      } else {
+        // If the item doesn't exist, return an error
+        return new Response("Inventory is full. Cannot add more items.", {
+          status: 400,
+        });
+      }
     } else {
-      // If the item doesn't exist, push it to the inventory
-      userInventory.items.push(inventoryItem);
+      // The inventory is not full, so check if the item already exists
+      const existingItemIndex = userInventory.items.findIndex(
+        (item) => item.itemIdentifier === itemIdentifier
+      );
+
+      if (existingItemIndex !== -1) {
+        // If the item already exists, update its quantity
+        userInventory.items[existingItemIndex].quantity += quantity;
+      } else {
+        // If the item doesn't exist, push it to the inventory
+        userInventory.items.push(inventoryItem);
+      }
     }
 
     // Save the updated user inventory
@@ -76,6 +89,6 @@ export const POST = async (req: any) => {
     return new Response(JSON.stringify(inventoryItem), { status: 201 });
   } catch (error) {
     console.error("Error purchasing item:", error);
-    return new Response("Bro you faailed to purchase item.", { status: 500 });
+    return new Response("Failed to purchase item.", { status: 500 });
   }
 };
