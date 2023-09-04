@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${KongText.variable} ${SilkScreen.variable} font-silkscreen light scroll-smooth`}
+      className={`${KongText.variable} ${SilkScreen.variable} font-silkscreen light`}
       style={{ colorScheme: "light" }}
     >
       <body>

@@ -3,6 +3,8 @@ import ItemBox from "./ItemBox";
 // import mockItems from "@/components/mockItems";
 
 const InventoryContainer = ({ items }: any) => {
+  // console.log("thte items prop inside inventoryContainer =>", items);
+
   const renderGrid = () => {
     const grid = [];
     for (let row = 0; row < 4; row++) {
@@ -10,6 +12,8 @@ const InventoryContainer = ({ items }: any) => {
       for (let col = 0; col < 4; col++) {
         const index = row * 4 + col;
         const itemData = items[index] || null;
+        // console.log("itemData in inventoryContainer=>", itemData);
+
         rowItems.push(<ItemBox key={index} itemData={itemData} />);
       }
       grid.push(

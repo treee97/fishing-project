@@ -51,6 +51,12 @@ export const POST = async (req: any) => {
       // Handle the case where the user's inventory doesn't exist
       return new Response("User inventory not found.", { status: 404 });
     }
+    // Check if the user's inventory already contains 16 different items
+    if (userInventory.items.length >= 16) {
+      return new Response("Inventory is full. Cannot add more items.", {
+        status: 400,
+      });
+    }
     // Check if the item already exists in the user's inventory
     const existingItemIndex = userInventory.items.findIndex(
       (item) => item.itemIdentifier === itemIdentifier

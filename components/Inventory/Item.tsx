@@ -1,15 +1,15 @@
 // Item.js
 import QuantityIndicator from "./Quantity";
+import Image from "next/image";
 
 interface Iitem {
-  imageUrl: string;
   quantity: number;
 }
 
-const Item = ({ imageUrl, quantity }: Iitem) => {
+const Item = ({ quantity }: Iitem) => {
   return (
     <div className="p-4 relative">
-      <img src={imageUrl} alt="Item" />
+      <Image src="/assets/little_pond.png" width={30} height={30} alt="Item" />
       <QuantityIndicator quantity={quantity} />
     </div>
   );
