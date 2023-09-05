@@ -1,34 +1,48 @@
-import React from "react";
-import ItemBox from "../Inventory/ItemBox";
-import mockItems from "../mockItems";
+"use client";
+import { useState, useEffect } from "react";
+
+import axios from "axios";
+//next-auth
+import { useSession } from "next-auth/react";
+
 //my components
 import SellItemDetail from "./SellItemDetail";
-// import InventoryContainer from "../Inventory/InventoryContainer";
+import InventoryContainer from "../Inventory/InventoryContainer";
 const SellTable = () => {
-  const renderGrid = () => {
-    const grid = [];
-    for (let row = 0; row < 4; row++) {
-      const rowItems = [];
-      for (let col = 0; col < 4; col++) {
-        const index = row * 4 + col;
-        const itemData = mockItems[index] || null;
-        rowItems.push(<ItemBox key={index} itemData={itemData} />);
-      }
-      grid.push(
-        <div key={row} className="mb-2">
-          {rowItems}
-        </div>
-      );
-    }
-    return grid;
+  const { data: session } = useSession();
+  const [userInventory, setUserInventory] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleSelectItem = (itemData: any) => {
+    // console.log("itemData en el hadnleselect", itemData);
+    setSelectedItem(itemData);
   };
+
+  useEffect(() => {
+    const fetchInventory = async () => {
+      try {
+        // Make the API request with the user's ID
+        const response = await axios.get(
+          `/api/getinventory/${session?.user?.id}`
+        );
+        setUserInventory(response.data.items);
+      } catch (error) {
+        console.error("Error fetching inventory data:", error);
+      }
+    };
+
+    if (session?.user?.id) {
+      fetchInventory();
+    }
+  }, [session]);
   return (
     <>
-      <div className="flex border justify-between items-center">
-        {/* componente inventory inventory / container */}
-        <div className="grid grid-cols-4 gap-4">{renderGrid()}</div>
-        {/* <InventoryContainer />    de momento no podemos trabajar con este porque tiene items[index] => esta utilizando el array de mongodb*/}
-        <SellItemDetail />
+      <div className="flex justify-between items-center">
+        <InventoryContainer
+          items={userInventory}
+          onSelectItem={handleSelectItem} // Pass the handleSelectItem function
+        />
+        <SellItemDetail selectedItem={selectedItem} />
       </div>
     </>
   );

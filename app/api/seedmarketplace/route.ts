@@ -8,14 +8,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       await connectToDB();
 
-      // const { userId } = JSON.parse(req.body);
-      // console.log("userid yooo", userId);
-
       const randomData = [
-        // Generate random data as needed, similar to your previous example
+        // Generate random data as needed
         {
           sellerId: new mongoose.Types.ObjectId(),
-          // buyerId: new mongoose.Types.ObjectId(),
           itemIdentifier: "18",
           itemName: "fish 18",
           quantity: 50,

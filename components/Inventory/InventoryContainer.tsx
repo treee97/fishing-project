@@ -2,7 +2,7 @@
 import ItemBox from "./ItemBox";
 // import mockItems from "@/components/mockItems";
 
-const InventoryContainer = ({ items }: any) => {
+const InventoryContainer = ({ items, onSelectItem }: any) => {
   // console.log("thte items prop inside inventoryContainer =>", items);
 
   const renderGrid = () => {
@@ -14,7 +14,13 @@ const InventoryContainer = ({ items }: any) => {
         const itemData = items[index] || null;
         // console.log("itemData in inventoryContainer=>", itemData);
 
-        rowItems.push(<ItemBox key={index} itemData={itemData} />);
+        rowItems.push(
+          <ItemBox
+            key={index}
+            itemData={itemData}
+            onClick={() => onSelectItem(itemData)}
+          />
+        );
       }
       grid.push(
         <div key={row} className="mb-2">

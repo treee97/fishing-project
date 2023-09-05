@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 //next-auth
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 //axios
 import axios from "axios";
@@ -35,7 +34,7 @@ const Inventory = () => {
   }, [session]); // Add session as a dependency to re-run the effect when the session changes
 
   return (
-    <div className="relative section custom-padding">
+    <div className="relative section custom-padding flex items-center justify-center">
       <Title text="Inventory" />
       <InventoryContainer items={userInventory} />
       {/* div flex 
