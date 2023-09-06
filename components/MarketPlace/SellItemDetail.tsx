@@ -1,6 +1,6 @@
 "use client";
 //react hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 //react-icons
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
@@ -11,6 +11,12 @@ const SellItemDetail = ({ selectedItem }: any) => {
   const { data: session } = useSession();
   const [quantity, setQuantity] = useState<number>(1);
   const [price, setPrice] = useState<number>(selectedItem?.price ?? 1);
+
+  useEffect(() => {
+    // Update state when a new item is selected
+    setQuantity(selectedItem?.quantity || 1);
+    setPrice(selectedItem?.price || 1);
+  }, [selectedItem]);
 
   const onQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = Number(e.target.value);
@@ -79,7 +85,7 @@ const SellItemDetail = ({ selectedItem }: any) => {
           value={quantity}
           onChange={onQuantityChange}
         />
-        <button>
+        <button type="button">
           <BiDownArrow
             className="text-xl"
             onClick={() => {

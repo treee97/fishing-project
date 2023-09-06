@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
 import { useSession } from "next-auth/react";
-import InventoryModel from "@/models/inventory";
 
 type BuyModalProps = {
   item: {
@@ -26,7 +25,7 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
     let newQuantity = Number(e.target.value);
 
     // Ensure the new quantity is within the valid range
-    // newQuantity = Math.max(1, Math.min(newQuantity, item.quantity));
+    newQuantity = Math.max(1, Math.min(newQuantity, item.quantity));
 
     setQuantity(newQuantity);
   };
@@ -101,7 +100,7 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
             <BiUpArrow
               className="text-xl"
               onClick={() => {
-                if (quantity >= 0) setQuantity(quantity + 1);
+                if (quantity < item.quantity) setQuantity(quantity + 1);
               }}
             />
           </button>
@@ -114,7 +113,7 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
             value={quantity}
             onChange={handleQuantityChange}
           />
-          <button>
+          <button type="button">
             <BiDownArrow
               className="text-xl"
               onClick={() => {
