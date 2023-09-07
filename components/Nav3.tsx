@@ -1,15 +1,15 @@
 "use client";
 // React-hooks
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 //next
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 //next-auth
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 // assets
 import logo_fish from "@/assets/images/golden_fish.png";
-import userIcon from "@/assets/icons/icon-user.svg";
 //my components
 import OpenGameButton from "@/utils/openGame";
 import NavMobile from "./NavMobile";
@@ -19,6 +19,7 @@ const Navbar = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState<null | unknown>(null);
   const router = useRouter();
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     (async () => {
@@ -112,7 +113,17 @@ const Navbar = () => {
                 className="hidden md:flex align-center justify-center text-light-text dark:text-dark-text"
                 key={index}
               >
-                <Image src={userIcon} alt="user icon" />
+                <Image
+                  src={
+                    resolvedTheme === "dark"
+                      ? "./assets/icons/icon-user-light.svg"
+                      : "./assets/icons/icon-user.svg"
+                  }
+                  alt="user icon"
+                  width="0"
+                  height="0"
+                  className="w-full h-auto"
+                />
                 <button
                   type="button"
                   key={provider.name}

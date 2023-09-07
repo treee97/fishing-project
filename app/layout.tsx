@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 // By using an underscore (_) to name the imported variable, you are effectively telling the linter and compiler that you are intentionally not using the imported value and to ignore any related errors.
 

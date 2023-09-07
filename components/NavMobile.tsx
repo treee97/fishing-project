@@ -1,16 +1,14 @@
+"use client";
 //React-hooks
 import { useState, useEffect } from "react";
 //next hooks
 import Image from "next/image";
 import Link from "next/link";
 //next-auth
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { Session } from "next-auth";
 //next-theme
-//assets
-import wave from "@/assets/icons/wave_hamburger.svg";
-//my components
-import OpenGameButton from "@/utils/openGame";
+import { useTheme } from "next-themes";
 
 export interface IMenuProps {
   session: Session | null;
@@ -21,6 +19,7 @@ export interface IMenuProps {
 
 const NavMobile = ({ session, provider, className }: IMenuProps) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
     <>
@@ -31,7 +30,17 @@ const NavMobile = ({ session, provider, className }: IMenuProps) => {
             onClick={() => setShowMenu(true)}
             className="block"
           >
-            <Image src={wave} alt="Menu" />
+            <Image
+              src={
+                resolvedTheme === "dark"
+                  ? "./assets/icons/wave_hamburger-light.svg"
+                  : "./assets/icons/wave_hamburger.svg"
+              }
+              alt="Menu"
+              width="0"
+              height="0"
+              className="w-full h-auto"
+            />
           </button>
         </div>
         {showMenu && (
