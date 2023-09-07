@@ -6,9 +6,8 @@ import type { Metadata } from "next";
 import { SilkScreen, KongText } from "@/fonts/fonts";
 //my components
 import Navbar from "@/components/Nav3";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer/Footer";
 import Provider from "@/components/Provider";
-import ThemeToggleButton from "@/components/themeToggleBtn";
 //next-auth
 import { Session } from "next-auth";
 
@@ -37,8 +36,8 @@ export default function RootLayout({
             <Navbar />
             {/* <ThemeToggleButton /> */}
             {children}
-            <Footer />
           </main>
+          <Footer />
         </Provider>
       </body>
     </html>

@@ -19,7 +19,7 @@ const ThemeToggleButton = () => {
         resolvedTheme === "dark"
           ? "text-light-text bg-light-background"
           : "text-dark-text bg-dark-background"
-      } transition duration-500`}
+      } transition duration-500 border-2`}
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       {resolvedTheme === "dark" ? "light" : "dark"}

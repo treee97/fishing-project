@@ -67,11 +67,28 @@ body {
     1px 1px 0 #000;
 }
 
-.bg-blob{
+.bg-blob {
   @apply bg-[url('../public/assets/dark-blob.svg')] bg-center bg-no-repeat pointer-events-none bg-contain dark:bg-[url('../public/assets/light-blob.svg')] w-full 
-  h-[80vh] md:h-[100vh]
+  h-[80vh] md:h-[100vh];
 }
-.img_map{
+
+.bg-footer{
+   @apply /* dark:bg-light-background  */
+  after:bg-[url('../public/assets/svg/layered-waves-haikei.svg')] 
+  after:dark:bg-[url('../public/assets/svg/layered-waves-haikei-light.svg')] 
+  
+after:content-[""]
+after:absolute  /*it stays fixed on the screen*/
+after:bottom-0 after:left-0
+after:w-full after:h-screen
+
+after:-z-10
+after:bg-cover
+ after:bg-center
+ after:bg-no-repeat
+ 
+}
+.img_map {
   width: 100%;
   height: 100%;
 }
