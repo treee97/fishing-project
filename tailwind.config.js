@@ -51,5 +51,13 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.disable-scroll': {
+          overflow: 'hidden',
+        },
+      };
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },],
 };

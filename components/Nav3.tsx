@@ -13,6 +13,7 @@ import logo_fish from "@/assets/images/golden_fish.png";
 //my components
 import OpenGameButton from "@/utils/openGame";
 import NavMobile from "./NavMobile";
+import ThemeToggleButton from "./themeToggleBtn";
 //my hooks
 
 const Navbar = () => {
@@ -68,26 +69,29 @@ const Navbar = () => {
             </div>
           </div>
           {/* tercera columna: sign in */}
-          <div className="hidden md:flex items-center justify-around">
-            <Image
-              src={session?.user.image || "/assets/images/fish.svg"}
-              width={37}
-              height={37}
-              className="rounded-full"
-              alt="profile"
-            />
-            <button
-              type="button"
-              className="text-light-text dark:text-dark-text text-xl font-normal"
-              onClick={async () => {
-                await signOut();
-                router.push("/");
-              }}
-            >
-              Sign
-              <br />
-              Out
-            </button>
+          <div className="hidden md:flex items-center justify-between gap-4">
+            <ThemeToggleButton />
+            <div className="flex items-center justify-around">
+              <Image
+                src={session?.user.image || "/assets/images/fish.svg"}
+                width={37}
+                height={37}
+                className="rounded-full"
+                alt="profile"
+              />
+              <button
+                type="button"
+                className="text-light-text dark:text-dark-text text-xl font-normal"
+                onClick={async () => {
+                  await signOut();
+                  router.push("/");
+                }}
+              >
+                Sign
+                <br />
+                Out
+              </button>
+            </div>
           </div>
           {/* mobile menu  when logged*/}
           {/* cuando el elem es >= 768px se esconde, si es mas
@@ -113,29 +117,32 @@ const Navbar = () => {
                 className="hidden md:flex align-center justify-center text-light-text dark:text-dark-text"
                 key={index}
               >
-                <Image
-                  src={
-                    resolvedTheme === "dark"
-                      ? "./assets/icons/icon-user-light.svg"
-                      : "./assets/icons/icon-user.svg"
-                  }
-                  alt="user icon"
-                  width="0"
-                  height="0"
-                  className="w-full h-auto"
-                />
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
-                  className="text-xl font-normal"
-                >
-                  Sign
-                  <br />
-                  in
-                </button>
+                <div className="flex items-center justify-center gap-4">
+                  <ThemeToggleButton />
+                  <Image
+                    src={
+                      resolvedTheme === "dark"
+                        ? "./assets/icons/icon-user-light.svg"
+                        : "./assets/icons/icon-user.svg"
+                    }
+                    alt="user icon"
+                    width="0"
+                    height="0"
+                    className="w-full h-auto"
+                  />
+                  <button
+                    type="button"
+                    key={provider.name}
+                    onClick={() => {
+                      signIn(provider.id);
+                    }}
+                    className="text-xl font-normal"
+                  >
+                    Sign
+                    <br />
+                    in
+                  </button>
+                </div>
               </div>
             ))}
 

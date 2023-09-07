@@ -35,7 +35,7 @@ export default function RootLayout({
           <div className="main" />
           <main className="app transition duration-500">
             <Navbar />
-            <ThemeToggleButton />
+            {/* <ThemeToggleButton /> */}
             {children}
             <Footer />
           </main>

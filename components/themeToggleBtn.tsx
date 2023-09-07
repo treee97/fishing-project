@@ -15,7 +15,7 @@ const ThemeToggleButton = () => {
 
   return (
     <button
-      className={`fixed z-50 bottom-52 md:bottom-40 right-4 p-2 rounded-full ${
+      className={`p-2 rounded-full ${
         resolvedTheme === "dark"
           ? "text-light-text bg-light-background"
           : "text-dark-text bg-dark-background"
