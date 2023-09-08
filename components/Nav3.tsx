@@ -36,7 +36,7 @@ const Navbar = () => {
   //
   return (
     // fixed top-0 left-0 z-50
-    <div className="absolute top-0 left-0 z-50 w-full h-20 flex items-center justify-around ">
+    <nav className="fixed bg-black bg-opacity-20 top-0 left-0 z-50 w-full h-20 flex items-center justify-around ">
       {/* primera columna: logo */}
       <Link href="/">
         <Image width={44} height={80} src={logo_fish} alt="fish logo" />
@@ -157,7 +157,7 @@ const Navbar = () => {
           />
         </>
       )}
-    </div>
+    </nav>
   );
 };
 

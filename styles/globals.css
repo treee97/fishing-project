@@ -51,8 +51,11 @@ body {
   box-sizing: border-box;
 }
 /* max-w-7xl mx-auto */
+.custom-x-padding{
+  @apply sm:px-16 px-6
+}
 .app {
-  @apply relative z-10 flex justify-center items-center flex-col sm:px-16 px-6;
+  /* @apply relative z-10 flex justify-center items-center flex-col ; */
 }
 .main {
   @apply w-screen min-h-screen fixed flex justify-center pointer-events-none px-6 py-32
@@ -72,22 +75,57 @@ body {
   h-[80vh] md:h-[100vh];
 }
 
-.bg-footer{
-   @apply /* dark:bg-light-background  */
+.bg-footer {
+  @apply /* dark:bg-light-background  */
   after:bg-[url('../public/assets/svg/layered-waves-haikei.svg')] 
   after:dark:bg-[url('../public/assets/svg/layered-waves-haikei-light.svg')] 
-  
-after:content-[""]
-after:absolute  /*it stays fixed on the screen*/
-after:bottom-0 after:left-0
-after:w-full after:h-screen
 
-after:-z-10
-after:bg-cover
- after:bg-center
- after:bg-no-repeat
- 
+  after:content-[""]
+  after:absolute 
+  after:bottom-0 after:left-0
+  after:w-full after:h-full
+
+  after:-z-10
+  md:after:bg-cover
+  after:bg-bottom
+  after:bg-no-repeat;
 }
+
+
+.bg-curves {
+  @apply after:bg-[url('../public/assets/curves/curves-light-vertical.svg')]
+  after:dark:bg-[url('../public/assets/curves/curves-dark-vertical.svg')] 
+  md:after:bg-[url('../public/assets/curves/curves-light.svg')]
+  md:after:dark:bg-[url('../public/assets/curves/curves-dark.svg')]
+
+  after:content-[""]
+  after:-z-50
+  after:absolute 
+  after:bottom-0 after:left-0
+  after:w-full after:h-full
+  after:bg-top after:bg-cover 
+  after:bg-no-repeat
+
+
+}
+
+.bg-curves-rotate {
+  @apply after:bg-[url('../public/assets/curves/curves-light-vertical.svg')]
+  after:dark:bg-[url('../public/assets/curves/curves-dark-vertical.svg')] 
+  md:after:bg-[url('../public/assets/curves/curves-light.svg')]
+  md:after:dark:bg-[url('../public/assets/curves/curves-dark.svg')]
+
+  after:-scale-y-100
+  after:content-[""]
+  after:-z-50
+  after:absolute 
+  after:bottom-0 after:left-0
+  after:w-full after:h-full
+  after:bg-top after:bg-cover 
+  after:bg-no-repeat
+
+}
+
 .img_map {
   width: 100%;
   height: 100%;

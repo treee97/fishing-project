@@ -32,12 +32,11 @@ export default function RootLayout({
       <body>
         <Provider session={session}>
           <div className="main" />
-          <main className="app transition duration-500">
+          <main className="app">
             <Navbar />
-            {/* <ThemeToggleButton /> */}
             {children}
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </Provider>
       </body>
     </html>

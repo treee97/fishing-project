@@ -3,7 +3,7 @@ import Image from "next/image";
 import CardFeatures from "./CardFeatures";
 const Features = () => {
   return (
-    <div className="flex flex-col items-center justify-center section custom-padding mb-20 gap-4">
+    <div className="flex flex-col items-center justify-center section custom-padding mb-20 gap-4 custom-x-padding">
       <div className="flex flex-col">
         <h2 className="text-4xl md:text-7xl ">Features</h2>
         <p>Most of them in progress...</p>

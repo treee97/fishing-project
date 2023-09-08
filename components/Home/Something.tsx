@@ -1,7 +1,7 @@
 import React from "react";
 
 const Something = () => {
-  return <div className="section custom-padding">Something</div>;
+  return <div className="border section relative bg-curves">Something</div>;
 };
 
 export default Something;

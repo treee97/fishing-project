@@ -8,7 +8,7 @@ interface ICardProps {
 
 const CardFeatures = ({ title, description }: ICardProps) => {
   return (
-    <div className="max-w-xl p-4 cursor-pointer ">
+    <div className="w-full md:max-w-xl p-4 cursor-pointer ">
       <details
         className="open:bg-dark-background dark:open:bg-light-background open:ring-1 open:ring-black/5 dark:open:ring-white/10 open:shadow-lg p-6 rounded-lg border bg-dark-background dark:bg-light-background text-center "
         open

@@ -19,7 +19,7 @@ const CTA = () => {
     }
   }, [session]);
   return (
-    <div className="h-[80vh] custom-padding flex items-center justify-center">
+    <div className="h-[90vh] custom-padding custom-x-padding flex items-center justify-center">
       <div className="relative w-full h-[60vh] rounded-lg overflow-hidden">
         <video
           className="absolute inset-0 w-full h-full object-cover"
