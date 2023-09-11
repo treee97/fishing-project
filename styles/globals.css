@@ -60,7 +60,14 @@ body {
 .main {
   @apply w-screen min-h-screen fixed flex justify-center pointer-events-none px-6 py-32
 
-   before:bg-[url('../assets/images/map.svg')] before:bg-center before:bg-cover before:bg-no-repeat before:bg-light-background before:absolute before:content-[""] before:z-[2] before:w-full before:h-full before:top-0 
+    before:bg-[url('../assets/images/map.svg')] 
+    before:bg-center before:bg-cover before:bg-no-repeat
+  before:bg-light-background 
+    before:absolute 
+    before:content-[""]
+    before:top-0 
+    before:z-[2]
+    before:w-full before:h-full
    
    dark:before:bg-[url('../assets/images/map_whiteLines.svg')] dark:before:bg-dark-background;
 }

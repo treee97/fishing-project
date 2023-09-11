@@ -1,4 +1,6 @@
 "use client";
+// pusher
+import Pusher from "pusher-js";
 //react hooks
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -6,8 +8,18 @@ import axios from "axios";
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
 import { useSession } from "next-auth/react";
 
+// Pusher.logToConsole = true;
+// const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY as string, {
+//   cluster: "eu",
+// });
+
+// const channel = pusher.subscribe("my-channel");
+// channel.bind("my-event", function (data: any) {
+//   alert(JSON.stringify(data));
+// });
+
 const SellItemDetail = ({ selectedItem }: any) => {
-  console.log("this is selectedItem inside itemdetail =>", selectedItem);
+  // console.log("this is selectedItem inside itemdetail =>", selectedItem);
   const { data: session } = useSession();
   const [quantity, setQuantity] = useState<number>(1);
   const [price, setPrice] = useState<number>(selectedItem?.price ?? 1);
@@ -46,7 +58,7 @@ const SellItemDetail = ({ selectedItem }: any) => {
         price,
         userId: session?.user?.id,
       };
-      console.log("the sellData in itemDetail.tsx", sellData);
+      // console.log("the sellData in itemDetail.tsx", sellData);
 
       // Make a POST request to your marketplace API
       const response = await axios.post("/api/sellitem", sellData);

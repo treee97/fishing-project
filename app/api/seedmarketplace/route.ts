@@ -12,10 +12,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         // Generate random data as needed
         {
           sellerId: new mongoose.Types.ObjectId(),
-          itemIdentifier: "18",
-          itemName: "fish 18",
-          quantity: 50,
-          price: 90,
+          itemIdentifier: "9999",
+          itemName: "mama",
+          quantity: 3,
+          price: 200,
           rarity: "exotic",
           habitat: ["coast", "river"],
         },

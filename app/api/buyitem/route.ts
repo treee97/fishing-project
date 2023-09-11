@@ -7,7 +7,7 @@ export const POST = async (req: any) => {
 
   try {
     await connectToDB();
-    console.log("itemiden, quanti, userid", itemIdentifier, quantity, userId);
+    // console.log("itemiden, quanti, userid", itemIdentifier, quantity, userId);
 
     const marketplaceTransaction = await MarketplaceTransaction.findOne({
       itemIdentifier: itemIdentifier,
