@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           itemName: "mama",
           quantity: 3,
           price: 200,
-          rarity: "exotic",
+          rarity: "legendary",
           habitat: ["coast", "river"],
         },
         // Add more sample data as needed
