@@ -37,24 +37,23 @@ const handler = NextAuth({
 				if (!userExists) {
 					// Create a new user
 					const newUser = await User.create({
-					  email: profile.email,
-				//    username: generatedUsername,
-					  username: profile.name,
+						email: profile.email,
+						//    username: generatedUsername,
+						username: profile.name,
 
-					  image: profile.picture,
+						image: profile.picture,
 					});
-		  
+
 					// Create an empty inventory for the user
 					const newInventory = await InventoryModel.create({
-					  userId: newUser._id,
-					  items: [],
+						userId: newUser._id,
+						items: [],
 					});
-		  
+
 					// Update the user's inventoryId with the new inventory's _id
 					newUser.inventoryId = newInventory._id;
 					await newUser.save();
-				  }
-		  
+				}
 
 				return true;
 			} catch (error) {

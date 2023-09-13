@@ -22,7 +22,7 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
 	const { data: session } = useSession();
 
 	const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		let newQuantity = Number(e.target.value); 
+		let newQuantity = Number(e.target.value);
 
 		// Ensure the new quantity is within the valid range
 		newQuantity = Math.max(1, Math.min(newQuantity, item.quantity));
@@ -41,6 +41,7 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
 			} else {
 				// AQUI VA EL CONFIRM. SI CONFIRMAMOS ENTONCES SE HACE EL HANDLEBUY.
 				await handleBuy();
+				// if()
 				onClose();
 			}
 		} catch (error) {
@@ -107,6 +108,7 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
 						/>
 					</button>
 					<input
+						autoFocus
 						type="text"
 						className="w-16 text-center text-light-text bg-light-background dark:text-dark-text dark:bg-dark-background "
 						maxLength={4}

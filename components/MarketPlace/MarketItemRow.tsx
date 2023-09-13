@@ -1,6 +1,8 @@
 import { useState } from "react";
 import BuyModal from "./BuyModal";
 import Pusher from "pusher-js";
+import PusherServer from "pusher";
+import PusherClient from "pusher-js";
 
 type MarketItemRowProps = {
 	item: {
@@ -13,14 +15,6 @@ type MarketItemRowProps = {
 		// Add other properties as needed
 	};
 };
-
-// const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY as string, {
-// 	cluster: "eu",
-// });
-// const channel = pusher.subscribe("marketplace");
-// channel.bind("updatemarketplace", function (data: any) {
-// 	alert(JSON.stringify(data));
-// });
 
 const MarketItemRow = ({ item }: MarketItemRowProps) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
