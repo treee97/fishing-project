@@ -3,7 +3,7 @@
 import { connectToDB, seedMarketplace } from "@/utils/database";
 import mongoose from "mongoose";
 
-const handler = async (req, res) => {
+const handler = async (req: any, res: any) => {
   if (req.method === "POST") {
     try {
       await connectToDB();

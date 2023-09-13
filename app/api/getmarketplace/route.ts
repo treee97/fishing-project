@@ -3,7 +3,7 @@ import { connectToDB } from "@/utils/database";
 import MarketplaceTransactionModel from "@/models/marketplace";
 
 // Ensure Mongoose is connected to the database
-const handler = async (req, res) => {
+const handler = async (req: any, res: any) => {
   if (req.method === "GET") {
     try {
       await connectToDB();
