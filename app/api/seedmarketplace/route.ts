@@ -1,9 +1,9 @@
 // api/seedmarketplace.ts
-import { NextApiRequest, NextApiResponse } from "next";
+// import { NextApiRequest, NextApiResponse } from "next";
 import { connectToDB, seedMarketplace } from "@/utils/database";
 import mongoose from "mongoose";
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
       await connectToDB();
