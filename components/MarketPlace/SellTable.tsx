@@ -46,19 +46,18 @@ const SellTable = () => {
 		}
 	}, [session]);
 	return (
-		<>
-			<div className="relative flex justify-around items-center custom-padding">
-				<InventoryContainer
-					items={userInventory}
-					onSelectItem={handleSelectItem} // Pass the handleSelectItem function
-				/>
-				<SellItemDetail
-					selectedItem={selectedItem}
-					onSellItem={updateMessage}
-				/>
-				{message && <Message text={message} onClose={hideMessage} />}
-			</div>
-		</>
+		<div className="section border border-pink-500 flex justify-center items-center  ">
+			<InventoryContainer
+				items={userInventory}
+				onSelectItem={handleSelectItem} // Pass the handleSelectItem function
+			/>
+			<SellItemDetail selectedItem={selectedItem} onSellItem={updateMessage} />
+			{message && (
+				<div className="absolute left-0 right-0 bottom-0 w-full  flex items-center  justify-center ">
+					<Message text={message} onClose={hideMessage} />
+				</div>
+			)}
+		</div>
 	);
 	// div con inventoryContainer/>  y  sellContainer flex
 };

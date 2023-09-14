@@ -26,7 +26,7 @@ const Message = ({ text, onClose }: IMessageProps) => {
 	};
 
 	return showMessage ? (
-		<div className="fixed left-0 right-0 bottom-0 flex items-center justify-center bg-slate-200">
+		<div className="relative flex items-center justify-center bg-green-400 border-2 border-white mb-4 rounded-lg">
 			<div className="text-white p-4 rounded-lg text-center relative">
 				<button
 					onClick={handleClose}
@@ -34,7 +34,7 @@ const Message = ({ text, onClose }: IMessageProps) => {
 				>
 					<AiOutlineClose />
 				</button>
-				<p>{text}</p>
+				<p className="mt-2">{text}</p>
 			</div>
 		</div>
 	) : null;
