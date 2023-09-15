@@ -1,4 +1,3 @@
-// GoIc3gL3rsJIrGWB
 import mongoose from "mongoose";
 import MarketplaceTransactionModel from "@/models/marketplace";
 
@@ -10,7 +9,7 @@ export const connectToDB = async () => {
   mongoose.set("strictQuery", true);
 
   if (isConnected) {
-    console.log("MongoDB is already connected");
+    // console.log("MongoDB is already connected");
     return;
     //we return it so we stop it from running
   }
@@ -25,7 +24,7 @@ export const connectToDB = async () => {
       dbName: "fishdata",
       // useUnifiedTopology: true,
     });
-    //the urlparser and typo options arent needed anymore because the're part of the default behaviour or thats what i've been told.
+    //the urlparser and topology options arent needed anymore because the're part of the default behaviour or thats what i've been told.
     isConnected = true;
     console.log("MongoDB connected");
   } catch (error) {
