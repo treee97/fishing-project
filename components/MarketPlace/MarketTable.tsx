@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MarketItemRow from "./MarketItemRow";
 import ClientPusher from "@/services/ClientPusher";
-import { stringify } from "querystring";
 
 const MarketTable = () => {
   const [marketData, setMarketData] = useState([]);
@@ -26,8 +25,10 @@ const MarketTable = () => {
     // Subscribe to a Pusher channel
     const marketplaceChannel = ClientPusher.subscribe("marketplace-channel");
 
-    marketplaceChannel.bind("new-item", () => {
+    marketplaceChannel.bind("new-item", (data: any) => {
       // When a new item event is received, fetch the updated marketplace data
+      console.log(JSON.stringify(data));
+
       fetchData();
       // Update the marketData state with the new item
     });
