@@ -9,7 +9,7 @@ const handler = async (req: any, res: any) => {
       await connectToDB();
 
       const marketplaceData = await MarketplaceTransactionModel.find();
-      console.log("esto es marketplacedata", marketplaceData);
+      // console.log("esto es marketplacedata", marketplaceData);
 
       return new Response(JSON.stringify(marketplaceData), {
         status: 200,

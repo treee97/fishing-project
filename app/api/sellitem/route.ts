@@ -18,10 +18,10 @@ export const POST = async (req: any) => {
     await connectToDB();
 
     const userInventory = await InventoryModel.findOne({ userId });
-    console.log(
-      "var userinventory que tiene esto => InventoryModel.findOne({ userId });",
-      userInventory
-    );
+    // console.log(
+    //   "var userinventory que tiene esto => InventoryModel.findOne({ userId });",
+    //   userInventory
+    // );
 
     if (!userInventory) {
       return new Response("User inventory not found.", { status: 404 });

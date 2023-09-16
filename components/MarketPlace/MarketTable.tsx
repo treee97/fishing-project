@@ -13,6 +13,8 @@ const MarketTable = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/api/getmarketplace");
+        console.log("response is being called!");
+
         setMarketData(response.data);
         // log
       } catch (error) {
@@ -25,12 +27,10 @@ const MarketTable = () => {
     // Subscribe to a Pusher channel
     const marketplaceChannel = ClientPusher.subscribe("marketplace-channel");
 
-    marketplaceChannel.bind("new-item", (data: any) => {
-      // When a new item event is received, fetch the updated marketplace data
-      console.log(JSON.stringify(data));
+    marketplaceChannel.bind("new-item", () => {
+      console.log("fetch inside bind", fetchData());
 
       fetchData();
-      // Update the marketData state with the new item
     });
 
     // Cleanup on component unmount
@@ -40,12 +40,16 @@ const MarketTable = () => {
     };
   }, []);
 
+  const updateMarketplaceData = (newData: any) => {
+    setMarketData(newData);
+  };
   // const updateMessage = (newMessage: string | null) => {
   // 	setMessage(newMessage);
   // };
   // const hideMessage = () => {
   // 	setMessage(null);
   // };
+
   //⁡⁢⁣⁢ SEARCH BAR AND FILTERS !!! SPRINT 7⁡
   return (
     <div className="section flex justify-center items-center">
@@ -59,7 +63,12 @@ const MarketTable = () => {
             <th className="border border-slate-600">Purchase</th>
           </tr>
           {marketData.map((item, index) => (
-            <MarketItemRow key={index} item={item} onBuyItem={message} />
+            <MarketItemRow
+              key={index}
+              item={item}
+              onBuyItem={message}
+              updateMarketplaceData={updateMarketplaceData}
+            />
           ))}
         </tbody>
       </table>

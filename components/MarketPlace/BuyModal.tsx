@@ -15,9 +15,15 @@ type BuyModalProps = {
   onClose: () => void; // Callback to close the modal
   onConfirm: (quantity: number) => void; // Callback to confirm the purchase
   disabled: boolean;
+  updateMarketplaceData: any;
 };
 
-const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
+const BuyModal = ({
+  item,
+  onClose,
+  onConfirm,
+  updateMarketplaceData,
+}: BuyModalProps) => {
   const [quantity, setQuantity] = useState(1);
   const { data: session } = useSession();
 
@@ -75,8 +81,10 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
             quantity,
             userId: userId,
           });
-
           console.log("Buy response:", response.data);
+          const updatedMarketplaceData = await axios.get("/api/getmarketplace");
+          updateMarketplaceData(updatedMarketplaceData.data);
+          console.log("updatmarketdata=>", updateMarketplaceData);
         } catch (error) {
           console.error("Error buying item:", error);
         }

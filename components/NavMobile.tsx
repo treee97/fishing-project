@@ -10,7 +10,8 @@ import { Session } from "next-auth";
 //next-theme
 import { useTheme } from "next-themes";
 import { CgClose } from "react-icons/cg";
-
+import waveHamburgerDark from "public/assets/icons/wave_hamburger-light.svg";
+import waveHamburgerLight from "public/assets/icons/wave_hamburger.svg";
 import ThemeToggleButton from "./themeToggleBtn";
 
 export interface IMenuProps {
@@ -55,8 +56,8 @@ const NavMobile = ({ session, provider, className }: IMenuProps) => {
             <Image
               src={
                 resolvedTheme === "dark"
-                  ? "./assets/icons/wave_hamburger-light.svg"
-                  : "./assets/icons/wave_hamburger.svg"
+                  ? waveHamburgerDark
+                  : waveHamburgerLight
               }
               alt="Menu"
               width="0"
