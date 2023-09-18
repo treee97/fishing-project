@@ -13,7 +13,6 @@ const SellItemDetail = ({ selectedItem, onSellItem }: any) => {
   // console.log("this is selectedItem inside itemdetail =>", selectedItem);
   const { data: session } = useSession();
   const [quantity, setQuantity] = useState<number>(1);
-  const [message, setMessage] = useState<string | null>(null);
   const [price, setPrice] = useState<number>(selectedItem?.price ?? 1);
 
   useEffect(() => {

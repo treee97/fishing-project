@@ -1,4 +1,3 @@
-// import { NextApiRequest, NextApiResponse } from "next";
 import { connectToDB } from "@/utils/database";
 import MarketplaceTransactionModel from "@/models/marketplace";
 

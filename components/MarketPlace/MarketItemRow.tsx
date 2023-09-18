@@ -11,15 +11,9 @@ type MarketItemRowProps = {
     price: number;
     // Add other properties as needed
   };
-  onBuyItem: any;
-  updateMarketplaceData: any;
 };
 
-const MarketItemRow = ({
-  item,
-  onBuyItem,
-  updateMarketplaceData,
-}: MarketItemRowProps) => {
+const MarketItemRow = ({ item }: MarketItemRowProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleBuyClick = () => {
@@ -75,7 +69,6 @@ const MarketItemRow = ({
             onClose={handleCloseModal}
             onConfirm={handleConfirmPurchase}
             disabled={isModalOpen}
-            updateMarketplaceData={updateMarketplaceData}
           />
         )}
       </td>

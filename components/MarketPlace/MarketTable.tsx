@@ -6,7 +6,6 @@ import ClientPusher from "@/services/ClientPusher";
 
 const MarketTable = () => {
   const [marketData, setMarketData] = useState([]);
-  const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
     // Fetch data from your API endpoint
@@ -27,9 +26,8 @@ const MarketTable = () => {
     // Subscribe to a Pusher channel
     const marketplaceChannel = ClientPusher.subscribe("marketplace-channel");
 
-    marketplaceChannel.bind("new-item", () => {
-      console.log("fetch inside bind", fetchData());
-
+    marketplaceChannel.bind("new-item", (data: any) => {
+      alert(JSON.stringify(data));
       fetchData();
     });
 
@@ -40,17 +38,6 @@ const MarketTable = () => {
     };
   }, []);
 
-  const updateMarketplaceData = (newData: any) => {
-    setMarketData(newData);
-  };
-  // const updateMessage = (newMessage: string | null) => {
-  // 	setMessage(newMessage);
-  // };
-  // const hideMessage = () => {
-  // 	setMessage(null);
-  // };
-
-  //⁡⁢⁣⁢ SEARCH BAR AND FILTERS !!! SPRINT 7⁡
   return (
     <div className="section flex justify-center items-center">
       <table className="overflow-hidden text-lg table-fixed border border-slate-500 text-light-text dark:text-light-text w-4/5 rounded-lg">
@@ -63,12 +50,7 @@ const MarketTable = () => {
             <th className="border border-slate-600">Purchase</th>
           </tr>
           {marketData.map((item, index) => (
-            <MarketItemRow
-              key={index}
-              item={item}
-              onBuyItem={message}
-              updateMarketplaceData={updateMarketplaceData}
-            />
+            <MarketItemRow key={index} item={item} />
           ))}
         </tbody>
       </table>
