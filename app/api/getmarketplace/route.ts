@@ -1,4 +1,5 @@
 import { connectToDB } from "@/utils/database";
+import { NextResponse } from "next/server";
 import MarketplaceTransactionModel from "@/models/marketplace";
 
 // Ensure Mongoose is connected to the database
@@ -8,14 +9,8 @@ const handler = async (req: any, res: any) => {
       await connectToDB();
 
       const marketplaceData = await MarketplaceTransactionModel.find();
-      console.log("esto es marketplacedata", marketplaceData);
-// https://nextjs.org/docs/app/building-your-application/caching
-      return new Response(JSON.stringify(marketplaceData), {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      return NextResponse.json(marketplaceData);
+      // res.status(200).json(marketplaceData);
     } catch (error) {
       console.error("Error fetching marketplace data:", error);
       return new Response("Server error", { status: 500 });
