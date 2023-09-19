@@ -8,8 +8,8 @@ const handler = async (req: any, res: any) => {
       await connectToDB();
 
       const marketplaceData = await MarketplaceTransactionModel.find();
-      // console.log("esto es marketplacedata", marketplaceData);
-
+      console.log("esto es marketplacedata", marketplaceData);
+// https://nextjs.org/docs/app/building-your-application/caching
       return new Response(JSON.stringify(marketplaceData), {
         status: 200,
         headers: {
