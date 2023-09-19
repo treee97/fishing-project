@@ -78,6 +78,7 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
               userId: userId,
             }),
           });
+          console.log("response", response);
           // if we wanted to parse the item or check if the data is being sent correctly.
           const data = await response.json();
           console.log("Buy response:", data);

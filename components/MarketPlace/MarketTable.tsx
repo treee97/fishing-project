@@ -10,12 +10,10 @@ const MarketTable = () => {
     // Fetch data from your API endpoint
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/getmarketplace", {
-          next: { revalidate: 1000 },
-        });
+        const response = await fetch("/api/getmarketplace");
         console.log("response is being called!");
+
         const data = await response.json();
-        // console.log("the marketplace data!!", data);
         setMarketData(data);
       } catch (error) {
         console.error("Error fetching marketplace data:", error);
