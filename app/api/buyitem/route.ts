@@ -2,6 +2,8 @@ import { connectToDB } from "@/utils/database";
 import MarketplaceTransaction from "@/models/marketplace";
 import InventoryModel from "@/models/inventory";
 
+export const dynamic = "force-dynamic";
+
 export const POST = async (req: any) => {
   const { itemIdentifier, quantity, userId } = await req.json();
 

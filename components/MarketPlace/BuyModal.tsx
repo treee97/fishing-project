@@ -56,12 +56,9 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
           status: 401,
         });
       } else {
-        // Access the user object from the session
-        const user = session?.user;
+        const userId = session?.user?.id;
 
         // Check if the user object contains the user's ID
-        const userId = user?.id;
-
         if (!userId) {
           console.error("User ID is not available in session.");
           return new Response("User ID is not available.", { status: 401 });
@@ -78,10 +75,9 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
               userId: userId,
             }),
           });
-          console.log("response", response);
+
           // if we wanted to parse the item or check if the data is being sent correctly.
-          const data = await response.json();
-          console.log("Buy response:", data);
+          console.log("Buy response json:", await response.json());
         } catch (error) {
           console.error("Error buying item:", error);
         }

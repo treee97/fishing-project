@@ -44,7 +44,7 @@ const SellTable = () => {
     }
   }, [session]);
   return (
-    <div className="section border border-pink-500 flex justify-center items-center  ">
+    <div className="section flex justify-center items-center  ">
       <InventoryContainer
         items={userInventory}
         onSelectItem={handleSelectItem} // Pass the handleSelectItem function

@@ -3,7 +3,6 @@
 import Pusher from "pusher-js";
 //react hooks
 import { useState, useEffect } from "react";
-import axios from "axios";
 //react-icons
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
 import { useSession } from "next-auth/react";
