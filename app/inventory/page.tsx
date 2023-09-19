@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react";
 //next-auth
 import { useSession } from "next-auth/react";
-//axios
-import axios from "axios";
 //my components
 import Title from "@/components/Title";
 import InventoryContainer from "@/components/Inventory/InventoryContainer";
@@ -17,10 +15,11 @@ const Inventory = () => {
     const fetchInventory = async () => {
       try {
         // Make the API request with the user's ID
-        const response = await axios.get(
-          `/api/getinventory/${session?.user?.id}`
-        );
-        setUserInventory(response.data.items);
+        const response = await fetch(`/api/getinventory/${session?.user?.id}`);
+        const data = await response.json();
+        // console.log("this is data", data);
+
+        setUserInventory(data.items);
         // console.log("the response.data.items epic", userInventory);
       } catch (error) {
         console.error("Error fetching inventory data:", error);

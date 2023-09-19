@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
 import { useSession } from "next-auth/react";
 
@@ -68,12 +67,20 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
           return new Response("User ID is not available.", { status: 401 });
         }
         try {
-          const response = await axios.post("/api/buyitem", {
-            itemIdentifier: item.itemIdentifier,
-            quantity,
-            userId: userId,
+          const response = await fetch("/api/buyitem", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              itemIdentifier: item.itemIdentifier,
+              quantity,
+              userId: userId,
+            }),
           });
-          console.log("Buy response:", response.data);
+          // if we wanted to parse the item or check if the data is being sent correctly.
+          const data = await response.json();
+          console.log("Buy response:", data);
         } catch (error) {
           console.error("Error buying item:", error);
         }

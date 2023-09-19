@@ -52,7 +52,13 @@ const SellItemDetail = ({ selectedItem, onSellItem }: any) => {
       // console.log("the sellData in itemDetail.tsx", sellData);
 
       // Make a POST request to your marketplace API
-      const response = await axios.post("/api/sellitem", sellData);
+      const response = await fetch("/api/sellitem", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sellData),
+      });
 
       // Handle the response as needed (e.g., show a success message, update inventory, etc.)
       if (response.status === 201) {

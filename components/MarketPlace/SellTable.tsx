@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 
-import axios from "axios";
 //next-auth
 import { useSession } from "next-auth/react";
 
@@ -32,10 +31,9 @@ const SellTable = () => {
     const fetchInventory = async () => {
       try {
         // Make the API request with the user's ID
-        const response = await axios.get(
-          `/api/getinventory/${session?.user?.id}`
-        );
-        setUserInventory(response.data.items);
+        const response = await fetch(`/api/getinventory/${session?.user?.id}`);
+        const data = await response.json();
+        setUserInventory(data.items);
       } catch (error) {
         console.error("Error fetching inventory data:", error);
       }
