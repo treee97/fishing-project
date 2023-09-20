@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 type BuyModalProps = {
   item: {
@@ -11,14 +12,15 @@ type BuyModalProps = {
     habitat: string[];
     rarity: string;
   };
-  onClose: () => void; // Callback to close the modal
-  onConfirm: (quantity: number) => void; // Callback to confirm the purchase
+  onClose: () => void;
+  onConfirm: (quantity: number) => void;
   disabled: boolean;
 };
 
 const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
   const [quantity, setQuantity] = useState(1);
   const { data: session } = useSession();
+  const router = useRouter();
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newQuantity = Number(e.target.value);
@@ -40,7 +42,6 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
       } else {
         // AQUI VA EL handleCONFIRM. SI CONFIRMAMOS ENTONCES SE HACE EL HANDLEBUY.
         await handleBuy();
-        // if()
         onClose();
       }
     } catch (error) {
@@ -50,7 +51,6 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
 
   const handleBuy = async () => {
     try {
-      // Send a request to the server to buy the item
       if (!session) {
         return new Response("You must be logged in to make a purchase", {
           status: 401,
@@ -76,8 +76,16 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
             }),
           });
 
-          // if we wanted to parse the item or check if the data is being sent correctly.
-          console.log("Buy response json:", await response.json());
+          if (response.ok) {
+            console.log("Buy response json:", await response.json());
+
+            router.refresh();
+          } else {
+            console.error(
+              "Error buying item. Response status:",
+              response.status
+            );
+          }
         } catch (error) {
           console.error("Error buying item:", error);
         }

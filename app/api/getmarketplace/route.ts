@@ -2,7 +2,7 @@ import { connectToDB } from "@/utils/database";
 import { NextResponse } from "next/server";
 import MarketplaceTransactionModel from "@/models/marketplace";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 // Ensure Mongoose is connected to the database
 const handler = async (req: any, res: any) => {
   if (req.method === "GET") {
