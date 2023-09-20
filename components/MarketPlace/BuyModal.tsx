@@ -74,6 +74,7 @@ const BuyModal = ({ item, onClose, onConfirm }: BuyModalProps) => {
               quantity,
               userId: userId,
             }),
+            cache: "no-store",
           });
 
           if (response.ok) {

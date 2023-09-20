@@ -1,6 +1,7 @@
 import { connectToDB } from "@/utils/database";
 import MarketplaceTransaction from "@/models/marketplace";
 import InventoryModel from "@/models/inventory";
+import { revalidatePath } from "next/cache";
 
 // export const dynamic = "force-dynamic";
 
@@ -87,6 +88,10 @@ export const POST = async (req: any) => {
 
     // Save the updated user inventory
     await userInventory.save();
+
+    const path = "/marketplace";
+    revalidatePath(path);
+    console.log("revalidating path");
 
     return new Response(JSON.stringify(inventoryItem), { status: 201 });
   } catch (error) {
