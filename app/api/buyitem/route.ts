@@ -4,6 +4,7 @@ import InventoryModel from "@/models/inventory";
 import { revalidatePath } from "next/cache";
 
 // export const dynamic = "force-dynamic";
+// export const revalidate = 0;
 
 export const POST = async (req: any) => {
   const { itemIdentifier, quantity, userId } = await req.json();
@@ -90,8 +91,9 @@ export const POST = async (req: any) => {
     await userInventory.save();
 
     const path = "/marketplace";
-    revalidatePath(path);
     console.log("revalidating path");
+
+    revalidatePath(path);
 
     return new Response(JSON.stringify(inventoryItem), { status: 201 });
   } catch (error) {
