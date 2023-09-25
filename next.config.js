@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	experimental: {
-		appDir: true,
 		serverComponentsExternalPackages: ["mongoose"],
 		routeSegmentConfig: {
 			"/marketplace": {
 				revalidateImmediately: true,
 			},
 		},
+		serverActions: true,
 	},
 	images: {
 		domains: ["lh3.googleusercontent.com"],
