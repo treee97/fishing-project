@@ -51,9 +51,7 @@ body {
   box-sizing: border-box;
 }
 /* max-w-7xl mx-auto */
-.custom-x-padding{
-  @apply sm:px-16 px-6
-}
+
 .app {
   /* @apply relative z-10 flex justify-center items-center flex-col ; */
 }
@@ -153,4 +151,8 @@ body {
 .custom-padding {
   padding-top: 4rem;
   padding-bottom: 2rem;
+}
+
+.custom-x-padding{
+  @apply sm:px-16 px-6
 }
