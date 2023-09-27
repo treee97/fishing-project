@@ -7,13 +7,13 @@ const Header = () => {
       id="#header"
     >
       <div className="mt-12 p-4 ">
-        <h1 className="text-6xl md:text-8xl pl-4  font-medium tracking-tight">
+        <h1 className="text-6xl md:text-8xl pl-4 font-medium">
           Explore The <br /> World Of <br />
           <span className="font-semibold bg-gradient-to-t from-light-accent to-light-primary text-transparent bg-clip-text">
             OANESS
           </span>
         </h1>
-        <p className="text-lg">The fishing game no one was expecting...</p>
+        <p className="text-lg pl-4">The fishing game no one was expecting...</p>
       </div>
       <div className="flex items-center justify-center ">
         {/* <Object3d /> */}
