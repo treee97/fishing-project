@@ -13,10 +13,10 @@ const handler = async (req: any, res: any) => {
         {
           sellerId: new mongoose.Types.ObjectId(),
           itemIdentifier: "9999",
-          itemName: "Bubble",
+          itemName: "Bubbly wubbly",
           quantity: 3,
-          price: 200,
-          rarity: "legendary",
+          price: 2400,
+          rarity: "exotic",
           habitat: ["coast", "river"],
         },
         // Add more sample data as needed

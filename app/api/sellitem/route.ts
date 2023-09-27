@@ -6,22 +6,11 @@ import InventoryModel from "@/models/inventory";
 export const POST = async (req: any) => {
   const { itemIdentifier, itemName, quantity, price, rarity, habitat, userId } =
     await req.json();
-  // console.log(
-  //   "itename quantity price userId",
-  //   itemName,
-  //   quantity,
-  //   price,
-  //   userId
-  // );
 
   try {
     await connectToDB();
 
     const userInventory = await InventoryModel.findOne({ userId });
-    // console.log(
-    //   "var userinventory que tiene esto => InventoryModel.findOne({ userId });",
-    //   userInventory
-    // );
 
     if (!userInventory) {
       return new Response("User inventory not found.", { status: 404 });
