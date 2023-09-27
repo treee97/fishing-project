@@ -9,7 +9,7 @@ const Header = () => {
 			className="relative w-full z-10 section flex flex-col md:flex-row items-center justify-center bg-curves"
 			id="#header"
 		>
-			<div className="mt-12 pl-24 ">
+			<div className="mt-12 p-4 ">
 				<h1 className="text-6xl md:text-9xl  font-medium tracking-tight">
 					Explore The <br /> World Of <br />
 					<span className="font-semibold bg-gradient-to-t from-light-accent to-light-primary text-transparent bg-clip-text">
